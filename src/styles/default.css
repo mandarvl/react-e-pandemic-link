@@ -13,6 +13,11 @@ body {
   color: #E1E2E2 ;
 }
 
+div, form, section, article, header, footer{
+  width: 100%;
+  box-sizing: border-box;
+}
+
 h1{ 
     font-size: 2.2em; 
 } 
@@ -58,8 +63,9 @@ p{
 }
 
 input.text { 
-  padding: 3px; 
-  border: 1px solid #999999;     
+  padding: 4px; 
+  border: 1px solid #999999;
+  font-size: 15px ;     
 }
 
 /* Tables  
@@ -73,4 +79,13 @@ table {
 td  { 
   text-align: left; 
   font-weight: normal; 
+}
+
+/* Flexbox
+-----------------------------------------------------------------------------*/
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

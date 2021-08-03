@@ -1,0 +1,11 @@
+.site-logo{
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    color: #fff ;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em ;
+}
+
+.site-logo>.highlight{
+    color: #FB8122 ;
+}

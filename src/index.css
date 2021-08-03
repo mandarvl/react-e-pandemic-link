@@ -1,0 +1,20 @@
+button, input[type="submit"], [class~="btn-"]{
+    padding: 8px 16px;
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 0 3px 3px 0;
+    background-color: #FB8122;
+    color: #fff;
+    cursor: pointer ;
+    transition: background-color .5s ;
+    border: 0;
+}
+
+button:hover, input[type="submit"]:hover, [class~="btn-"]:hover{
+    background-color: #d6762d;
+}
+
+.highlight{
+    color: #FB8122 ;
+}
