@@ -1,0 +1,33 @@
+header{
+    display: flex;
+    align-items: center ;
+    height: 70px;
+    padding: 0 15px ;
+    background-color: #1D2228;
+}
+
+#primary-menu ul{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    list-style: none;
+}
+
+#primary-menu ul li{
+    display: block;
+    margin-left: 18px;
+}
+
+#primary-menu ul li:first-child{
+    margin-left: 0px;
+}
+
+#primary-menu ul li a{
+    color: #E1E2E2 ;
+    text-decoration: none;
+    transition: color .5s;
+}
+
+#primary-menu ul li a.active, #primary-menu ul li a:hover{
+    color: #FB8122 ;
+}
