@@ -1,9 +1,13 @@
 header{
+    height: 70px;
+    background-color: #1D2228;
+    padding: 0 .5em;
+}
+
+#header-content{
     display: flex;
     align-items: center ;
-    height: 70px;
-    padding: 0 25px ;
-    background-color: #1D2228;
+    height: 100%;
 }
 
 .header-search{

@@ -10,7 +10,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #E1E2E2 ;
+  color: #353535 ;
+  font-size: 15px ;
 }
 
 div, form, section, article, header, footer{
@@ -19,27 +20,33 @@ div, form, section, article, header, footer{
 }
 
 h1{ 
-    font-size: 2.2em; 
+    font-size: 2.0em; 
 } 
      
 h2{ 
-  font-size: 2.0em;     
+  font-size: 1.8em;     
 } 
      
 h3{ 
-  font-size: 1.8em; 
+  font-size: 1.6em; 
 } 
      
 h4{ 
-  font-size: 1.6em;     
+  font-size: 1.4em;  
+  margin: .4em 0;   
 } 
      
 h5{ 
-  font-size: 1.4em;     
+  font-size: 1.2em;     
 } 
      
 p{ 
-  font-size: 1.2em;     
+  font-size: 1.05em;     
+}
+
+img {
+  width:100%;
+  height:auto;
 }
 
 .clear{ 
@@ -54,12 +61,10 @@ p{
   float: left; 
 }
 
-#wrapper{  
-  width:980px;  
-  text-align:left;   
+.wrapper{  
+  width:85%;   
   margin-left:auto;  
-  margin-right:auto;  
-  background-color: #FFFFFF; 
+  margin-right:auto;
 }
 
 input.text { 
@@ -86,6 +91,26 @@ td  {
 
 .flex-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.flex-container>.flex-item{
+  display:flex;
+  padding:.5em;
+  box-sizing: border-box;
+}
+
+.flex-item>div{
+  flex: 1 1 auto;
+}
+
+.reverse{
+  flex-direction: row-reverse;
+}
+
+.flex-container>.col-25{
+  flex: 0 0 25%;
+  width: 25%;
 }
