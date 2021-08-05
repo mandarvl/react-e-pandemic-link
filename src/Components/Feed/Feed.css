@@ -1,70 +1,25 @@
-/* USER 
---------------------------------- */
-
-.pdp-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    min-width: 50px ;
-    overflow: hidden;
-    background-color: rgb(26, 26, 26);
-    border-radius: 50% ;
-}
-
-.user-header{
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    overflow: hidden;
-}
-
-.user-header .name{
-    font-weight: bold;
-    color: rgb(39, 39, 39);
-}
-
-.user-header .group-name, .user-header .date{
-    color: rgb(90, 90, 90) ;
-    font-size: 14px;
-}
-
-.user-header .date::before{
-    content: " · "
-}
-
-.user-header.disabled .name{
-    color: rgb(90, 90, 90);
-    font-weight: 400;
-}
-
-.user-header.disabled .pdp-container{
-    min-width: 30px ;
-    width: 30px;
-    height: 30px;
-}
-
 .side-info{
     margin-left: 10px;
 }
 
-.group-item{
-    margin-bottom: 20px ;
+.right-side .group-item .name{
+    display: block;
+    font-weight: 600;
+    color: rgb(36, 36, 36) ;
+    margin-bottom: 5px;
 }
 
-.group-item:last-child{
-    margin-bottom: 5px ;
+.right-side .group-item .small-img-container{
+    width: 30px ;
+    min-width: 30px;
+    height: 30px;
 }
 
-.small-img-container{
-    display: flex ;
-    justify-content: center;
-    align-items: center;
-    width: 20px ;
-    height: 20px;
-    min-width: 20px;
-    overflow: hidden ;
-    border-radius: 10% ;
-    margin-right: 10px ;
+.right-side .group-item{
+    padding-bottom: 15px;
+    border-bottom: 1px rgb(221, 221, 221) solid;
+}
+
+.right-side .group-item:last-child{
+    border-bottom: 0;
 }

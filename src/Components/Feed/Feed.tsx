@@ -1,62 +1,75 @@
 import { Component } from 'react';
 import './Feed.css' ;
 import SinglePost from '../SinglePost/SinglePost';
-import { DataList } from '../../data/DataList' ;
+import SingleGroup from '../SingleGroup/SingleGroup';
+import { MyContext } from '../MyContext' ;
+import { Post } from '../../models/Post';
+import { Group } from '../../models/Group';
 var FontAwesome = require('react-fontawesome');
 
 class Feed extends Component{
     render(){
         return (
-            <div className="wrapper flex-container">
-                <div className="col-25 flex-item">
-                    <div className="panel transparent group-sidebar">
-                        <h5 className="panel-title">Vos groupes</h5>
-                        <div className="group-item">
-                            <div className="small-img-container left">
-                                <FontAwesome name="plus" />
-                            </div>
-                            <a href="/group" className="clear"> Créer un groupe</a>
-                        </div>
-                        <div className="group-item">
-                            <div className="small-img-container left">
-                                <img className="object-fit-cover" src="assets/images/post/1.jpg" alt="Groupe" />
-                            </div>
-                            <a href="/group" className="clear">Santé et bien-être</a>
-                        </div>
-                        <div className="group-item">
-                            <div className="small-img-container left">
-                                <img className="object-fit-cover" src="assets/images/post/2.jpg" alt="Groupe" />
-                            </div>
-                            <a href="/group" className="clear">Sport</a>
-                        </div>
-                        <div className="group-item">
-                            <div className="small-img-container left">
-                                <img className="object-fit-cover" src="assets/images/post/3.jpg" alt="Groupe" />
-                            </div>
-                            <a href="/group" className="clear">Tout sur le covid</a>
-                        </div>
-                    </div>
-                </div>
-                <div className="flex-item">
-                    <div>
-                        <div className="panel">
-                            <div className="user-header disabled">
-                                <div className="pdp-container">
-                                    <img src="assets/images/pdp/1.jpg" alt="Pdp" />
+            <MyContext.Consumer>
+            {
+                (result) => {
+                    let posts = result.posts as Post[] ;
+                    let groups = result.groups as Group[] ;
+                    return(
+                        <div className="wrapper flex-container">
+                            <div className="col-25 flex-item">
+                                <div className="panel transparent group-sidebar">
+                                    <h5 className="panel-title">Vos groupes</h5>
+                                    <a href="/" className="group-item btn-semi-transparent">
+                                        <div className="small-img-container">
+                                            <FontAwesome name="plus" />
+                                        </div>
+                                        <div>
+                                            <span>Créer une groupe</span>
+                                        </div>
+                                    </a>
+                                    { groups.map((item: Group) => 
+                                        <SingleGroup key={item.id} currentGroup={item} showDescription={false}/>    
+                                    )}
+                                    <a href="/" className="group-item">
+                                        <div className="small-img-container">
+                                            <FontAwesome name="group" />
+                                        </div>
+                                        <div>
+                                            <span>Voir plus de groupes</span>
+                                        </div>
+                                    </a>
                                 </div>
-                                <span className="side-info name">Manda Ravalison</span>
                             </div>
-                            <h4 className="grey editable">Quelle est votre question?</h4>
+                            <div className="flex-item">
+                                <div>
+                                    <div className="panel">
+                                        <div className="user-header disabled">
+                                            <div className="pdp-container">
+                                                <img src="assets/images/pdp/1.jpg" alt="Pdp" />
+                                            </div>
+                                            <span className="side-info name">Manda Ravalison</span>
+                                        </div>
+                                        <h4 className="grey editable">Quelle est votre question?</h4>
+                                    </div>
+                                    { posts.map((item:Post) => 
+                                        <SinglePost key={item.id} currentPost={item} />
+                                    )}
+                                </div>
+                            </div>
+                            <div className="col-25 flex-item">
+                                <div className="panel right-side">
+                                    <h5 className="panel-title">Suggérées pour vous</h5>
+                                    { groups.map(item => 
+                                        <SingleGroup key={item.id} currentGroup={item} showDescription={true}/>    
+                                    )}
+                                </div>
+                            </div>
                         </div>
-                        { DataList.posts.map(item => 
-                            <SinglePost currentPost={item} />
-                        ) }
-                    </div>
-                </div>
-                <div className="col-25 flex-item">
-                    <div className="panel">Suggérées pour vous</div>
-                </div>
-            </div>
+                    )
+                }
+            }
+            </MyContext.Consumer>
         ) ;
     }
 }

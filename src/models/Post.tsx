@@ -1,6 +1,3 @@
-import {DataList} from '../data/DataList' ;
-import { User } from '../models/User' ;
-
 export class Post{
     id: number ;
     imagePath: string ;
@@ -9,8 +6,10 @@ export class Post{
     title: string ;
     description: string ;
     groupName: string ;
+    likes: number ;
+    dislikes: number;
 
-    constructor(id = 0, imagePath = '', authorId = 0, date = '', title = '', description = '', groupName = ''){
+    constructor(id = 0, imagePath = '', authorId = 0, date = '', title = '', description = '', groupName = '', likes = 0, dislikes = 0){
         this.id = id ;
         this.imagePath = imagePath ;
         this.authorId = authorId ;
@@ -18,9 +17,15 @@ export class Post{
         this.title = title ;
         this.description = description ;
         this.groupName = groupName ;
+        this.likes = likes ;
+        this.dislikes = dislikes ;
     }
 
-    GetAuthor():User{
-        return DataList.GetUserById(this.authorId) ;
+    incLike(){
+        this.likes++ ;
+    }
+
+    incDislike(){
+        this.dislikes++ ;
     }
 }

@@ -21,12 +21,23 @@ button, input[type="submit"], [class~="btn-"]{
     background-color: #FB8122;
     color: #fff;
     cursor: pointer ;
-    transition: background-color .5s ;
+    transition: all .5s ;
     border: 0;
 }
 
 button:hover, input[type="submit"]:hover, [class~="btn-"]:hover{
     background-color: #d6762d;
+}
+
+.btn-semi-transparent{
+    background-color: rgb(218, 218, 218);
+    color:rgb(105, 105, 105) ;
+    padding: 8px 5px;
+}
+
+.btn-semi-transparent:hover{
+    background-color: rgb(212, 212, 212);
+    color: rgb(128, 128, 128);
 }
 
 .panel{
