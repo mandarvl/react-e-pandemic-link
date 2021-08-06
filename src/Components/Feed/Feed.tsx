@@ -13,6 +13,12 @@ class Feed extends Component{
                         <h5 className="panel-title">Vos groupes</h5>
                         <div className="group-item">
                             <div className="small-img-container left">
+                                <FontAwesome name="plus" />
+                            </div>
+                            <a href="/group" className="clear"> Créer un groupe</a>
+                        </div>
+                        <div className="group-item">
+                            <div className="small-img-container left">
                                 <img className="object-fit-cover" src="assets/images/post/1.jpg" alt="Groupe" />
                             </div>
                             <a href="/group" className="clear">Santé et bien-être</a>
