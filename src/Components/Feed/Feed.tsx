@@ -2,13 +2,34 @@ import { Component } from 'react';
 import './Feed.css' ;
 import SinglePost from '../SinglePost/SinglePost';
 import { DataList } from '../../data/DataList' ;
+var FontAwesome = require('react-fontawesome');
 
 class Feed extends Component{
     render(){
         return (
             <div className="wrapper flex-container">
                 <div className="col-25 flex-item">
-                    <div className="panel">Vos groupes</div>
+                    <div className="panel transparent group-sidebar">
+                        <h5 className="panel-title">Vos groupes</h5>
+                        <div className="group-item">
+                            <div className="small-img-container left">
+                                <img className="object-fit-cover" src="assets/images/post/1.jpg" alt="Groupe" />
+                            </div>
+                            <a href="/group" className="clear">Santé et bien-être</a>
+                        </div>
+                        <div className="group-item">
+                            <div className="small-img-container left">
+                                <img className="object-fit-cover" src="assets/images/post/2.jpg" alt="Groupe" />
+                            </div>
+                            <a href="/group" className="clear">Sport</a>
+                        </div>
+                        <div className="group-item">
+                            <div className="small-img-container left">
+                                <img className="object-fit-cover" src="assets/images/post/3.jpg" alt="Groupe" />
+                            </div>
+                            <a href="/group" className="clear">Tout sur le covid</a>
+                        </div>
+                    </div>
                 </div>
                 <div className="flex-item">
                     <div>

@@ -8,7 +8,7 @@ class SinglePost extends Component<{currentPost:Post}>{
             <div className="panel post">
                 <div className="user-header">
                     <div className="pdp-container">
-                        <img src={this.props.currentPost.GetAuthor().pdpPath} alt="Pdp" />
+                        <img className="object-fit-cover" src={this.props.currentPost.GetAuthor().pdpPath} alt="Pdp" />
                     </div>
                     <div className="side-info">
                         <p className="name">{this.props.currentPost.GetAuthor().GetFullName()}</p>

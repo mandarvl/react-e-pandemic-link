@@ -13,12 +13,6 @@
     border-radius: 50% ;
 }
 
-.pdp-container img{
-    height:100%; 
-    min-width: 100%;
-    object-fit: cover;
-}
-
 .user-header{
     display: flex;
     align-items: center;
@@ -53,4 +47,24 @@
 
 .side-info{
     margin-left: 10px;
+}
+
+.group-item{
+    margin-bottom: 20px ;
+}
+
+.group-item:last-child{
+    margin-bottom: 5px ;
+}
+
+.small-img-container{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    width: 20px ;
+    height: 20px;
+    min-width: 20px;
+    overflow: hidden ;
+    border-radius: 10% ;
+    margin-right: 10px ;
 }
