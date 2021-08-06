@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import './SinglePost.css' ;
-import '../../models/Post' ;
 
 class SinglePost extends Component<{userName:string}>{
     render(){
