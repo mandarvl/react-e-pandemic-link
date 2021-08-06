@@ -1,8 +1,10 @@
 import { Component } from 'react';
 import './Feed.css' ;
+import Post from '../Post/Post' ;
 
 class Feed extends Component{
     render(){
+        const name = "Octavia Blake" ;
         return (
             <div className="wrapper flex-container">
                 <div className="col-25 flex-item">
@@ -15,17 +17,15 @@ class Feed extends Component{
                                 <div className="pdp-container">
                                     <img src="assets/images/pdp/1.jpg" alt="Pdp" />
                                 </div>
-                                <span className="name">Manda Ravalison</span>
+                                <span className="side-info name">Manda Ravalison</span>
                             </div>
                             <h4 className="grey editable">Quelle est votre question?</h4>
                         </div>
-                        <div className="panel">
-                            
-                        </div>
+                        <Post userName={name} />
                     </div>
                 </div>
                 <div className="col-25 flex-item">
-                    <div className="panel">Suggérée pour vous</div>
+                    <div className="panel">Suggérées pour vous</div>
                 </div>
             </div>
         ) ;
