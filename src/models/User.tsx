@@ -4,18 +4,16 @@ export class User{
     lastName: string ;
     pdpPath: string ;
     bio: string ;
-    pdcPath: string ;
 
-    constructor(id = 0, firstName = "", lastName = "", pdpPath = "", bio = "", pdcPath = ""){
+    constructor(id = 0, firstName = "", lastName = "", pdpPath = "", bio = ""){
         this.id = id ;
         this.firstName = firstName ;
         this.lastName = lastName ;
         this.pdpPath = pdpPath ;
         this.bio = bio ;
-        this.pdcPath = pdcPath ;
     }
 
-    getFullName():string{
+    GetFullName():string{
         return this.firstName+" "+this.lastName ;
     }
 }

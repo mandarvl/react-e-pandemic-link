@@ -21,7 +21,7 @@ button:hover, input[type="submit"]:hover, [class~="btn-"]:hover{
 
 .panel{
     background-color: #fff;
-    border: 1px solid rgb(196, 196, 196);
+    border: 1px solid rgb(199, 199, 199);
     padding: 20px;
     margin-bottom: 10px;
 }

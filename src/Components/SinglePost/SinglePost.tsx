@@ -1,26 +1,27 @@
 import { Component } from 'react';
 import './SinglePost.css' ;
+import { Post } from '../../models/Post' ;
 
-class SinglePost extends Component<{userName:string}>{
+class SinglePost extends Component<{currentPost:Post}>{
     render(){
         return (
             <div className="panel post">
                 <div className="user-header">
                     <div className="pdp-container">
-                        <img src="assets/images/pdp/2.jpg" alt="Pdp" />
+                        <img src={this.props.currentPost.GetAuthor().pdpPath} alt="Pdp" />
                     </div>
                     <div className="side-info">
-                        <p className="name">{this.props.userName}</p>
+                        <p className="name">{this.props.currentPost.GetAuthor().GetFullName()}</p>
                         <p>
-                            <span className="group-name">Santé et bien-être</span>
-                            <span className="date">14h</span>
+                            <span className="group-name">{this.props.currentPost.groupName}</span>
+                            <span className="date">{this.props.currentPost.date}</span>
                         </p>
                     </div>
                 </div>
                 <div className="post-content">
-                    <h5>Que faire si ma température est élevée?</h5>
+                    <h5>{this.props.currentPost.title}</h5>
                     <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    {this.props.currentPost.description}
                     </p>
                 </div>
             </div>

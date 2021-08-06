@@ -1,10 +1,10 @@
 import { Component } from 'react';
 import './Feed.css' ;
 import SinglePost from '../SinglePost/SinglePost';
+import { DataList } from '../../data/DataList' ;
 
 class Feed extends Component{
     render(){
-        const name = "Octavia Blake" ;
         return (
             <div className="wrapper flex-container">
                 <div className="col-25 flex-item">
@@ -21,7 +21,9 @@ class Feed extends Component{
                             </div>
                             <h4 className="grey editable">Quelle est votre question?</h4>
                         </div>
-                        <SinglePost userName={name} />
+                        { DataList.posts.map(item => 
+                            <SinglePost currentPost={item} />
+                        ) }
                     </div>
                 </div>
                 <div className="col-25 flex-item">
