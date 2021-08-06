@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import './Feed.css' ;
-import Post from '../Post/Post' ;
+import SinglePost from '../SinglePost/SinglePost';
 
 class Feed extends Component{
     render(){
@@ -21,7 +21,7 @@ class Feed extends Component{
                             </div>
                             <h4 className="grey editable">Quelle est votre question?</h4>
                         </div>
-                        <Post userName={name} />
+                        <SinglePost userName={name} />
                     </div>
                 </div>
                 <div className="col-25 flex-item">

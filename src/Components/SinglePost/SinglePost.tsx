@@ -1,7 +1,8 @@
 import { Component } from 'react';
-import './Post.css' ;
+import './SinglePost.css' ;
+import '../../models/Post' ;
 
-class Post extends Component<{userName:string}>{
+class SinglePost extends Component<{userName:string}>{
     render(){
         return (
             <div className="panel post">
@@ -28,4 +29,4 @@ class Post extends Component<{userName:string}>{
     }
 }
 
-export default Post ;
+export default SinglePost ;
