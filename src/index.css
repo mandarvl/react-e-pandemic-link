@@ -13,7 +13,7 @@ a:hover{
 }
 
 button, input[type="submit"], [class~="btn-"]{
-    padding: 13px 16px;
+    padding: 10px 20px;
     font-size: 14px;
     font-weight: 700;
     background-color: #FB8122;
@@ -67,11 +67,11 @@ button:hover, input[type="submit"]:hover, [class~="btn-"]:hover{
 }
 
 .btn-rounded{
-    border-radius: 30%;
-    -webkit-border-radius: 30%;
-    -moz-border-radius: 30%;
-    -ms-border-radius: 30%;
-    -o-border-radius: 30%;
+    border-radius: 1000px!important;
+    -webkit-border-radius: 1000px!important;
+    -moz-border-radius: 1000px!important;
+    -ms-border-radius: 1000px!important;
+    -o-border-radius: 1000px!important;
 }
 
 .panel{

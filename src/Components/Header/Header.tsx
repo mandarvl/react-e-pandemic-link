@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import './Header.css' ;
 import Logo from '../Logo/Logo' ;
+import { MyContext } from '../MyContext';
 var FontAwesome = require('react-fontawesome');
 
 class Header extends Component {
@@ -22,6 +23,7 @@ class Header extends Component {
                             <li><a href="#">Profil</a></li>
                             <li><a href="#">Messages</a></li>
                             <li><a href="#">Groupes</a></li>
+                            <li><button className="btn-rounded" onClick={() => this.context.newPostStatusHandler(true)}>Poser une question</button></li>
                         </ul>
                     </nav>
                 </div>
@@ -29,5 +31,5 @@ class Header extends Component {
         )
     }
 }
-
+Header.contextType = MyContext ;
 export default Header ;

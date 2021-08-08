@@ -6,6 +6,7 @@ import { Post } from './models/Post';
 import { User } from './models/User' ;
 import { Group } from './models/Group' ;
 import {MyContext} from './Components/MyContext' ;
+import NewPost from './Components/NewPost/NewPost';
 
 class App extends Component {
   state = {
@@ -37,15 +38,22 @@ class App extends Component {
                 return post.authorId === id
             }
         ) as Post[] ;
+    },
+    showNewPostModal: false,
+    newPostStatusHandler: (newPostState: boolean) => {
+      this.setState({
+        showNewPostModal: newPostState
+      })
     }
   }
 
   render(){
     return (
       <div className="App">
-        <Header/>
         <MyContext.Provider value={this.state}>
+          <Header/>
           <Feed/>
+          <NewPost />
         </MyContext.Provider>
         
       </div>

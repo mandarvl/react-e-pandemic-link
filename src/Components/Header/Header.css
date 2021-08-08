@@ -43,6 +43,7 @@ header{
 #primary-menu ul{
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     margin: 0;
     list-style: none;
 }

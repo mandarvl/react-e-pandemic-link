@@ -1,15 +1,18 @@
 import {Component} from 'react' ;
+import { MyContext } from '../MyContext';
 import './NewPost.css' ;
 var FontAwesome = require('react-fontawesome') ;
 
-class NewPost extends Component<{show: boolean, toggleShowStatus: any}>{
+class NewPost extends Component{
     render(){
-        return (
-            <div hidden={!this.props.show} className="modal">
+        return(
+            <div hidden={!this.context.showNewPostModal} className="modal">
                 <div className="modal-content animation-zoom-in container">
                     <div className="modal-header">
                         <h5 className="text-center modal-title">Poser une question</h5>
-                        <FontAwesome className="close red-hover" onClick={()=>this.props.toggleShowStatus(false)} name="times" />
+                        <FontAwesome className="close red-hover" name="times" onClick={() => {
+                            this.context.newPostStatusHandler(false) ;
+                        }} />
                     </div>
                     <div className="modal-body small-margin-y">
                         <form>
@@ -40,7 +43,9 @@ class NewPost extends Component<{show: boolean, toggleShowStatus: any}>{
                                 <span className="focus-input100-2"></span>
                             </div>
                             <div className="form-control text-right">
-                                <button className="btn-transparent">Annuler</button>
+                                <button className="btn-transparent" type="reset" onClick={() => {
+                                    this.context.newPostStatusHandler(false) ;
+                                }}>Annuler</button>
                                 <input type="submit" className="btn-rounded" value="Publier maintenant" />
                             </div>
                         </form>
@@ -50,5 +55,7 @@ class NewPost extends Component<{show: boolean, toggleShowStatus: any}>{
         ) ;
     }
 }
+
+NewPost.contextType = MyContext ;
 
 export default NewPost ;
