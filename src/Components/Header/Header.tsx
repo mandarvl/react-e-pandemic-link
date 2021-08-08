@@ -12,7 +12,7 @@ class Header extends Component {
                     <Logo />
                     <form className="header-search">
                         <input type="text" className="text" placeholder="Rechercher..."/>
-                        <button type="submit">
+                        <button type="submit" className="btn-icon">
                         <FontAwesome name='search' />
                         </button>
                     </form>

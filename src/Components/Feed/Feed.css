@@ -2,6 +2,10 @@
     margin-left: 10px;
 }
 
+.side-info .fa{
+    margin: 0 8px;
+}
+
 .right-side .group-item .name{
     display: block;
     font-weight: 600;

@@ -4,6 +4,12 @@
     border: 0; 
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -16,7 +22,6 @@ body {
 
 div, form, section, article, header, footer{
   width: 100%;
-  box-sizing: border-box;
 }
 
 h1{ 
@@ -62,6 +67,34 @@ img {
   float: left; 
 }
 
+.hidden, [hidden]{
+  display: none!important;
+}
+
+.inline-flex{
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.top-right{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-left{
+  text-align: left;
+}
+
 .wrapper{  
   width:85%;   
   margin-left:auto;  
@@ -74,10 +107,20 @@ img.object-fit-cover{
   object-fit: cover;
 }
 
-input.text { 
-  padding: 4px; 
-  border: 1px solid #999999;
-  font-size: 15px ;     
+input:not(input[type="submit"]), textarea { 
+  padding: 5px 10px; 
+  border: 1px solid #c2c2c2;
+  font-size: 16px ;    
+  font-family: inherit;
+}
+
+input:not(input[type="submit"]):focus, textarea:focus { 
+  border-color: transparent !important; 
+  outline: 0;
+}
+
+textarea{
+  resize: none;
 }
 
 /* Tables  
