@@ -44,6 +44,14 @@ class App extends Component {
       this.setState({
         showNewPostModal: newPostState
       })
+    },
+    postModifHandler : (id:number, updatedValue: Post) => {
+      const newPostList = this.state.posts ;
+      const index = newPostList.findIndex(post => post.id === id) ;
+      newPostList[index] = updatedValue ;
+      this.setState({
+        posts: newPostList
+      }) ;
     }
   }
 

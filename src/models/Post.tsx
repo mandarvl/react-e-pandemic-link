@@ -20,12 +20,4 @@ export class Post{
         this.likes = likes ;
         this.dislikes = dislikes ;
     }
-
-    incLike(){
-        this.likes++ ;
-    }
-
-    incDislike(){
-        this.dislikes++ ;
-    }
 }

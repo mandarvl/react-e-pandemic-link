@@ -7,6 +7,37 @@ import { User } from '../../models/User';
 var FontAwesome = require('react-fontawesome') ;
 
 class SinglePost extends Component<{currentPost:Post}>{
+    isLiked:boolean = false ;
+    isDisliked: boolean = false ;
+    performLike(){
+        this.isLiked = !this.isLiked ;
+        if(this.isLiked){
+            this.props.currentPost.likes++ ;
+            if(this.isDisliked){
+                this.props.currentPost.dislikes-- ;
+                this.isDisliked = false ;
+            } 
+        }else{
+            this.props.currentPost.likes-- ;
+        }
+
+        this.context.postModifHandler(this.props.currentPost.id, this.props.currentPost) ;
+    }
+
+    performDislike(){
+        this.isDisliked = !this.isDisliked ;
+        if(this.isDisliked){
+            this.props.currentPost.dislikes++ ;
+            if(this.isLiked){
+                this.props.currentPost.likes-- ;
+                this.isLiked = false ;
+            }
+        }else{
+            this.props.currentPost.dislikes-- ;
+        }
+        this.context.postModifHandler(this.props.currentPost.id, this.props.currentPost) ;
+    }
+
     render(){
         let author:User = this.context.getUserById(this.props.currentPost.authorId) ;
         return (
@@ -33,14 +64,14 @@ class SinglePost extends Component<{currentPost:Post}>{
                     <ul>
                         <li><a onClick={(e) => {
                                 e.preventDefault() ;
-                                this.props.currentPost.incLike()
+                                this.performLike() ;
                             }
-                        } href="#" className="like"><FontAwesome name="thumbs-o-up" /> <span className="value">{this.props.currentPost.likes}</span></a></li>
+                        } href="#" className={this.isLiked?"active":""}><FontAwesome name="thumbs-o-up" /> <span className="value">{this.props.currentPost.likes}</span></a></li>
                         <li><a onClick={(e) => {
                                 e.preventDefault() ; 
-                                this.props.currentPost.incDislike() ;
+                                this.performDislike() ;
                             }
-                        } href="#" className="dislike"><FontAwesome name="thumbs-o-down" /> <span className="value">{this.props.currentPost.dislikes}</span></a></li>
+                        } href="#" className={this.isDisliked?"active":""}><FontAwesome name="thumbs-o-down" /> <span className="value">{this.props.currentPost.dislikes}</span></a></li>
                         <li><a href="#"><FontAwesome name="comment-o" /> <span className="value">3</span></a></li>
                     </ul>
                 </div>

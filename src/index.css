@@ -252,13 +252,13 @@ select,
 /*---------------------------------------------*/
 input.input100 {
     height: 45px;
-    padding: 0 15px 0 13px;
+    padding: 0 15px 0 13px!important;
   }
   
   
 textarea.input100 {
     min-height: 199px;
-    padding: 13px 15px 0 13px;
+    padding: 13px 15px 0 13px!important;
 }
   
 /*------------------------------------------------------------------
