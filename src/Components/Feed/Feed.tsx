@@ -40,7 +40,7 @@ class Feed extends Component{
                     <div>
                         <div className="panel">
                             <div className="user-header disabled">
-                                <div className="pdp-container">
+                                <div className="pdp-container small">
                                     <img src="assets/images/pdp/1.jpg" alt="Pdp" />
                                 </div>
                                 <span className="side-info name">Manda Ravalison</span>
@@ -49,9 +49,11 @@ class Feed extends Component{
                                 this.context.newPostStatusHandler(true) ;
                             }}>Quelle est votre question?</h4>
                         </div>
-                        { this.context.posts.map((item:Post) => 
-                            <SinglePost key={item.id} currentPost={item} />
-                        )}
+                        { 
+                            this.context.posts.slice(0).reverse().map((item:Post) => 
+                                <SinglePost key={item.id} currentPost={item} />
+                            )
+                        }
                     </div>
                 </div>
                 <div className="col-25 flex-item">

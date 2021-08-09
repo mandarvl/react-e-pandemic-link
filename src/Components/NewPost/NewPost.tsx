@@ -1,9 +1,28 @@
-import {Component} from 'react' ;
+import { Component } from 'react' ;
+import { Group } from '../../models/Group';
+import { Post } from '../../models/Post';
 import { MyContext } from '../MyContext';
 import './NewPost.css' ;
 var FontAwesome = require('react-fontawesome') ;
 
 class NewPost extends Component{
+    groupSelect: any ;
+    titleInput: any ;
+    descInput: any ;
+
+    createPost(){
+        const length = this.context.posts.length ;
+        const lastId = this.context.posts[length - 1].id ;
+        let newPost = new Post(lastId+1, '', 1, 'A l\'instant', this.titleInput.value, this.descInput.value, Number(this.groupSelect.value), 0, 0) ;
+        console.log(newPost) ;
+        this.context.addPost(newPost) ;
+        this.context.newPostStatusHandler(false) ;
+
+        this.groupSelect.value = this.groupSelect.querySelector("option:first-child").value ;
+        this.titleInput.value = "" ;
+        this.descInput.value = "" ;
+    }
+
     render(){
         return(
             <div hidden={!this.context.showNewPostModal} className="modal">
@@ -15,7 +34,7 @@ class NewPost extends Component{
                         }} />
                     </div>
                     <div className="modal-body small-margin-y">
-                        <form>
+                        <form onSubmit={(e) => {e.preventDefault() ; this.createPost()}}>
                             <div className="user-header disabled">
                                 <div className="pdp-container">
                                     <img src="assets/images/pdp/1.jpg" alt="Pdp" />
@@ -24,21 +43,23 @@ class NewPost extends Component{
                                     <span className="name">Manda Ravalison</span>
                                     <FontAwesome name="caret-right" />
                                     <div className="custom-select">
-                                        <select>
-                                            <option value="1">Santé</option>
-                                            <option value="2">Sport</option>
-                                            <option value="3">Coronavirus</option>
+                                        <select name="group" required ref={node => this.groupSelect = node}>
+                                            {this.context.groups.map((item:Group) => {
+                                                return(
+                                                    <option key={item.id} value={item.id}>{item.name}</option>
+                                                ) ;
+                                            })}
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div className="form-control">
-                                <input type="text" className="input100" placeholder="Quelle est votre question ?" />
+                                <input type="text" required name="titre" ref={node => this.titleInput = node} className="input100" placeholder="Quelle est votre question ?" />
                                 <span className="focus-input100-1"></span>
                                 <span className="focus-input100-2"></span>
                             </div>
                             <div className="form-control">
-                                <textarea className="input100" placeholder="Donner plus de détails concernant votre question..."></textarea>
+                                <textarea className="input100" name="description" ref={node => this.descInput = node} placeholder="Donner plus de détails concernant votre question..."></textarea>
                                 <span className="focus-input100-1"></span>
                                 <span className="focus-input100-2"></span>
                             </div>

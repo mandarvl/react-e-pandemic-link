@@ -49,7 +49,7 @@ class SinglePost extends Component<{currentPost:Post}>{
                     <div className="side-info">
                         <p className="name">{author.GetFullName()}</p>
                         <p>
-                            <span className="group-name">{this.props.currentPost.groupName}</span>
+                            <span className="group-name">{this.context.getGroupById(this.props.currentPost.groupId).name}</span>
                             <span className="date">{this.props.currentPost.date}</span>
                         </p>
                     </div>
@@ -74,6 +74,18 @@ class SinglePost extends Component<{currentPost:Post}>{
                         } href="#" className={this.isDisliked?"active":""}><FontAwesome name="thumbs-o-down" /> <span className="value">{this.props.currentPost.dislikes}</span></a></li>
                         <li><a href="#"><FontAwesome name="comment-o" /> <span className="value">3</span></a></li>
                     </ul>
+                </div>
+                <div className="comments">
+                    <div className="comment">
+                        <div className="user-header">
+                            <div className="pdp-container small">
+                                <img className="object-fit-cover" src={author.pdpPath} alt="Pdp" />
+                            </div>
+                            <div className="side-info">
+                                <p className="name">{author.GetFullName()}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         ) ;
