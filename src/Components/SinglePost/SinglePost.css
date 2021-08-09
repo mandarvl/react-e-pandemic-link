@@ -47,7 +47,7 @@
 }
 
 .post-footer{
-    margin: 15px 0;
+    margin: 15px 0 10px 0;
 }
 
 .post-footer ul{
@@ -109,6 +109,35 @@
 }
 
 .comments{
-    margin: 10px 0;
-    border-top: 1px rgb(189, 189, 189) solid;
+    padding: 5px 0;
+    border-top: 2px rgb(189, 189, 189) solid;
+    opacity: 1;
+    font-size: 14px;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+}
+
+.comments.closed{
+    padding: 0;
+    opacity: 0;
+	height: 0!important;
+    overflow: hidden;
+}
+
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+.comments .viewport{
+    max-height: 300px;
+    overflow: auto;
 }

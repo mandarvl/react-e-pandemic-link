@@ -11,6 +11,11 @@ var FontAwesome = require('react-fontawesome') ;
 class SinglePost extends Component<{currentPost:Post}>{
     isLiked:boolean = false ;
     isDisliked: boolean = false ;
+    commentsDiv:any ;
+    state = {
+        isCommentsClosed: true
+    }
+
     performLike(){
         this.isLiked = !this.isLiked ;
         if(this.isLiked){
@@ -40,8 +45,23 @@ class SinglePost extends Component<{currentPost:Post}>{
         this.context.postModifHandler(this.props.currentPost.id, this.props.currentPost) ;
     }
 
+    toggleComments(event:any){
+        event.preventDefault() ;
+        let a = event.target as HTMLElement ;
+        if(a.nodeName !== "a"){
+            a = a.parentNode as HTMLElement ;
+        }
+
+        this.commentsDiv.style.height = this.commentsDiv.querySelector(".content").clientHeight+20+"px" ;
+        a.classList.toggle("active") ;
+        this.setState({
+            isCommentsClosed: !this.state.isCommentsClosed
+        }) ;
+    }
+
     render(){
         let author:User = this.context.getUserById(this.props.currentPost.authorId) ;
+        let myComments:_Comment[] = this.context.getCommentsByPostId(this.props.currentPost.id) ;
         return (
             <div className="panel post">
                 <div className="user-header">
@@ -74,14 +94,18 @@ class SinglePost extends Component<{currentPost:Post}>{
                                 this.performDislike() ;
                             }
                         } href="#" className={this.isDisliked?"active":""}><FontAwesome name="thumbs-o-down" /> <span className="value">{this.props.currentPost.dislikes}</span></a></li>
-                        <li><a href="#"><FontAwesome name="comment-o" /> <span className="value">3</span></a></li>
+                        <li><a onClick={(e) => this.toggleComments(e)} href="#"><FontAwesome name="comment-o" /> <span className="value">{myComments.length}</span></a></li>
                     </ul>
                 </div>
-                <div className="comments">
-                    <h5>Réponses</h5>
-                    {this.context.getCommentsByPostId(this.props.currentPost.id).map((item:_Comment) =>
-                        <SingleComment key={item.id} post={this.props.currentPost} currentComment={item} />
-                    )}
+                <div ref={node => this.commentsDiv = node} className={this.state.isCommentsClosed?"comments closed": "comments"}>
+                    <div className="content">
+                        <h5>Réponses</h5>
+                        <div className="viewport">
+                            {myComments.map((item:_Comment) =>
+                                <SingleComment key={item.id} post={this.props.currentPost} currentComment={item} />
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
         ) ;

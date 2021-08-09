@@ -1,10 +1,6 @@
 .comment{
     padding: 15px 0;
-    border-bottom: 1px rgb(187, 187, 187) solid ;
-}
-
-.comments .comment:first-of-type{
-    padding-top: 5px;
+    border-bottom: 1px rgb(209, 209, 209) solid ;
 }
 
 .comments .comment:last-of-type{
