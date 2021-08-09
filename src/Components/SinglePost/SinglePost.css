@@ -18,6 +18,7 @@
     align-items: center;
     flex-wrap: nowrap;
     overflow: hidden;
+    margin-bottom: 5px;
 }
 
 .user-header .name{
@@ -46,7 +47,7 @@
 }
 
 .post-footer{
-    margin-top: 15px;
+    margin: 15px 0;
 }
 
 .post-footer ul{
@@ -77,10 +78,6 @@
     -webkit-animation: zoom-kely-miverina .5s;
 }
 
-.post-footer ul li a.active *{
-    font-weight: bold;
-}
-
 @keyframes zoom-kely-miverina {
     0%{
         transform: scale(.8);
@@ -105,4 +102,13 @@
         -ms-transform: scale(1);
         -o-transform: scale(1);
     }
+}
+
+.post-footer ul li a.active *{
+    font-weight: bold;
+}
+
+.comments{
+    margin: 10px 0;
+    border-top: 1px rgb(189, 189, 189) solid;
 }

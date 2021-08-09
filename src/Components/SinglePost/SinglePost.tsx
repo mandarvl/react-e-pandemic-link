@@ -4,6 +4,8 @@ import './SinglePost.css' ;
 import { Post } from '../../models/Post' ;
 import { MyContext } from '../MyContext';
 import { User } from '../../models/User';
+import SingleComment from '../SingleComment/SingleComment';
+import { _Comment } from '../../models/_Comment';
 var FontAwesome = require('react-fontawesome') ;
 
 class SinglePost extends Component<{currentPost:Post}>{
@@ -76,16 +78,10 @@ class SinglePost extends Component<{currentPost:Post}>{
                     </ul>
                 </div>
                 <div className="comments">
-                    <div className="comment">
-                        <div className="user-header">
-                            <div className="pdp-container small">
-                                <img className="object-fit-cover" src={author.pdpPath} alt="Pdp" />
-                            </div>
-                            <div className="side-info">
-                                <p className="name">{author.GetFullName()}</p>
-                            </div>
-                        </div>
-                    </div>
+                    <h5>Réponses</h5>
+                    {this.context.getCommentsByPostId(this.props.currentPost.id).map((item:_Comment) =>
+                        <SingleComment key={item.id} post={this.props.currentPost} currentComment={item} />
+                    )}
                 </div>
             </div>
         ) ;

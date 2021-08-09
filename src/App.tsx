@@ -7,6 +7,7 @@ import { User } from './models/User' ;
 import { Group } from './models/Group' ;
 import {MyContext} from './Components/MyContext' ;
 import NewPost from './Components/NewPost/NewPost';
+import { _Comment } from './models/_Comment';
 
 class App extends Component {
   state = {
@@ -25,6 +26,16 @@ class App extends Component {
         new Group(2, "Sport", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "assets/images/post/2.jpg"),
         new Group(3, "Nouvelles sur le Coronavirus", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "assets/images/post/3.jpg")
     ] as Group[],
+    comments: [
+      new _Comment(1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "30m", 1, 1),
+      new _Comment(2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "1h", 2, 2),
+      new _Comment(3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "20m", 2, 1),
+      new _Comment(4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "2h", 3, 3),
+      new _Comment(5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "30m", 1, 3),
+      new _Comment(6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "25m", 1, 2),
+      new _Comment(7, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "55m", 3, 1),
+      new _Comment(8, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "55m", 3, 2)
+    ],
     addPost:(toAdd: Post) => {
       const updatedList = this.state.posts ;
       updatedList.push(toAdd) ;
@@ -52,6 +63,13 @@ class App extends Component {
                 return post.authorId === id
             }
         ) as Post[] ;
+    },
+    getCommentsByPostId(id: number):_Comment[]{
+      return this.comments.filter(
+        (com) => {
+          return com.postId === id
+        }
+      ) as _Comment[] ;
     },
     showNewPostModal: false,
     newPostStatusHandler: (newPostState: boolean) => {
