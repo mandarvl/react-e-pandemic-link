@@ -1,0 +1,24 @@
+.comments{
+    padding: 5px 0;
+    border-top: 2px rgb(189, 189, 189) solid;
+    opacity: 1;
+    font-size: 14px;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+}
+
+.comments.closed{
+    padding: 0;
+    opacity: 0;
+	height: 0!important;
+    overflow: hidden;
+}
+
+.comments .viewport{
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

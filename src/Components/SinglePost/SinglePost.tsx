@@ -4,14 +4,15 @@ import './SinglePost.css' ;
 import { Post } from '../../models/Post' ;
 import { MyContext } from '../MyContext';
 import { User } from '../../models/User';
-import SingleComment from '../SingleComment/SingleComment';
 import { _Comment } from '../../models/_Comment';
+import CommentList from '../CommentList/CommentList';
+import ReactDOM from 'react-dom';
 var FontAwesome = require('react-fontawesome') ;
 
 class SinglePost extends Component<{currentPost:Post}>{
     isLiked:boolean = false ;
     isDisliked: boolean = false ;
-    commentsDiv:any ;
+    commentsContainer:any ;
     state = {
         isCommentsClosed: true
     }
@@ -59,7 +60,9 @@ class SinglePost extends Component<{currentPost:Post}>{
     }
 
     componentDidUpdate(){
-        this.commentsDiv.style.height = this.commentsDiv.querySelector(".content").clientHeight+20+"px" ;
+        let comDiv = ReactDOM.findDOMNode(this.commentsContainer) as HTMLElement ;
+        let content:HTMLElement = comDiv.querySelector(".content") as HTMLElement ;
+        comDiv.style.height = content.clientHeight+20+"px" ;
     }
 
     render(){
@@ -100,28 +103,7 @@ class SinglePost extends Component<{currentPost:Post}>{
                         <li><a onClick={(e) => this.toggleComments(e)} href="#"><FontAwesome name="comment-o" /> <span className="value">{myComments.length}</span></a></li>
                     </ul>
                 </div>
-                <div ref={node => this.commentsDiv = node} className={this.state.isCommentsClosed?"comments closed": "comments"}>
-                    <div className="content">
-                        <h5>Réponses</h5>
-                        <div className="viewport">
-                            {myComments.map((item:_Comment) =>
-                                <SingleComment key={item.id} post={this.props.currentPost} currentComment={item} />
-                            )}
-                            <br />
-                            <form>
-                                <h5>Aidez cette personne en répondant à sa question</h5>
-                                <div className="form-control">
-                                    <textarea className="input100" name="answer" placeholder="Entrer votre réponse..."></textarea>
-                                    <span className="focus-input100-1"></span>
-                                    <span className="focus-input100-2"></span>
-                                </div>
-                                <div className="form-control">
-                                    <input type="submit" value="Envoyer" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <CommentList ref={component => this.commentsContainer = component} comments={myComments} post={this.props.currentPost} show={!this.state.isCommentsClosed} />
             </div>
         ) ;
     }
