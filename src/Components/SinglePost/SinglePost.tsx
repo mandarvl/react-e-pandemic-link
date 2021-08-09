@@ -48,15 +48,18 @@ class SinglePost extends Component<{currentPost:Post}>{
     toggleComments(event:any){
         event.preventDefault() ;
         let a = event.target as HTMLElement ;
-        if(a.nodeName !== "a"){
+        if(a.nodeName.toLowerCase() !== "a"){
             a = a.parentNode as HTMLElement ;
         }
 
-        this.commentsDiv.style.height = this.commentsDiv.querySelector(".content").clientHeight+20+"px" ;
         a.classList.toggle("active") ;
         this.setState({
             isCommentsClosed: !this.state.isCommentsClosed
         }) ;
+    }
+
+    componentDidUpdate(){
+        this.commentsDiv.style.height = this.commentsDiv.querySelector(".content").clientHeight+20+"px" ;
     }
 
     render(){
@@ -104,6 +107,18 @@ class SinglePost extends Component<{currentPost:Post}>{
                             {myComments.map((item:_Comment) =>
                                 <SingleComment key={item.id} post={this.props.currentPost} currentComment={item} />
                             )}
+                            <br />
+                            <form>
+                                <h5>Aidez cette personne en répondant à sa question</h5>
+                                <div className="form-control">
+                                    <textarea className="input100" name="answer" placeholder="Entrer votre réponse..."></textarea>
+                                    <span className="focus-input100-1"></span>
+                                    <span className="focus-input100-2"></span>
+                                </div>
+                                <div className="form-control">
+                                    <input type="submit" value="Envoyer" />
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
