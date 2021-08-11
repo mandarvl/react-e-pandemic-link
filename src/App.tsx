@@ -8,34 +8,18 @@ import { Group } from './models/Group' ;
 import {MyContext} from './Components/MyContext' ;
 import NewPost from './Components/NewPost/NewPost';
 import { _Comment } from './models/_Comment';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Data } from './Data/data';
+import Login from './Components/Login/Login';
+import Error from './Components/Error/Error';
+import AppLoader, { hideLoader, loaderRef, showLoader } from './Components/AppLoader/AppLoader';
 
-class App extends Component {
+class App extends Component{
   state = {
-    users: [
-      new User(1, "Octavia", "Blake", "assets/images/pdp/1.jpg" , "Follow me if you want professional's fashion and beauty advices"),
-      new User(2, "Clarke", "Gryffin", "assets/images/pdp/2.jpg", "Reading book is my passion <3"),
-      new User(3, "Bellamy", "Blake", "assets/images/pdp/3.jpg", "Welcome to my profile. No code, no life")
-    ] as User[],
-    posts: [
-        new Post(1, "assets/images/1.jpg", 3, "5h", "Pourquoi?", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 1, 5, 1),
-        new Post(2, "assets/images/3.jpg", 2, "12h", "Comment?", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 2, 8, 1),
-        new Post(3, "assets/images/4.jpg", 1, "5h", "Est-ce vrai?", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 1, 5, 4)
-    ] as Post[],
-    groups: [
-        new Group(1, "Santé et bien-être", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "assets/images/post/1.jpg"),
-        new Group(2, "Sport", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "assets/images/post/2.jpg"),
-        new Group(3, "Nouvelles sur le Coronavirus", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "assets/images/post/3.jpg")
-    ] as Group[],
-    comments: [
-      new _Comment(1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "30m", 1, 1),
-      new _Comment(2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "1h", 2, 2),
-      new _Comment(3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "20m", 2, 1),
-      new _Comment(4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "2h", 3, 3),
-      new _Comment(5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "30m", 1, 3),
-      new _Comment(6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "25m", 1, 2),
-      new _Comment(7, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "55m", 3, 1),
-      new _Comment(8, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "55m", 3, 2)
-    ],
+    posts: Data.posts,
+    comments: Data.comments,
+    users: Data.users,
+    groups: Data.groups,
     addPost:(toAdd: Post) => {
       let update = this.state.posts.slice(0) ;
       update.push(toAdd) ;
@@ -83,11 +67,6 @@ class App extends Component {
       const length = arr.length ;
       return arr[length - 1].id +1 ;
     },
-    newPostStatusHandler: (newPostState: boolean) => {
-      this.setState({
-        showNewPostModal: newPostState
-      })
-    },
     postModifHandler : (id:number, updatedValue: Post) => {
       const newPostList = this.state.posts ;
       const index = newPostList.findIndex(post => post.id === id) ;
@@ -96,21 +75,52 @@ class App extends Component {
         posts: newPostList
       }) ;
     },
-    showNewPostModal: false
+    newPostStatusHandler: (newPostState: boolean) => {
+      this.setState({
+        showNewPostModal: newPostState
+      })
+    },
+    showNewPostModal: false,
+    loggedUser: null,
+    login: (user: User) => {
+      this.setState({
+        loggedUser: user
+      })
+    },
+    logout: () => {
+      this.setState({
+        loggedUser: null
+      })
+    }
+  }
+
+  constructor(props:any){
+    super(props) ;
+    showLoader() ;
+  }
+  
+  componentDidMount(){
+    hideLoader() ;
   }
 
   render(){
     return (
       <div className="App">
         <MyContext.Provider value={this.state}>
-          <Header/>
-          <Feed/>
+          <Router>
+            <Header/>
+            <Switch>
+              <Route path="/feed" component={Feed}></Route>
+              <Route path="/login" component={Login}></Route>
+              <Route component={Error}></Route>
+            </Switch>
+          </Router>
           {
             this.state.showNewPostModal?<NewPost />:null
           }
           
         </MyContext.Provider>
-        
+        <AppLoader ref={loaderRef} />
       </div>
     );
   }

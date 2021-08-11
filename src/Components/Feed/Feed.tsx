@@ -5,9 +5,17 @@ import SingleGroup from '../SingleGroup/SingleGroup';
 import { MyContext } from '../MyContext' ;
 import { Post } from '../../models/Post';
 import { Group } from '../../models/Group';
+import { hideLoader, showLoader } from '../AppLoader/AppLoader';
 var FontAwesome = require('react-fontawesome');
 
 class Feed extends Component{
+    constructor(props:any){
+        super(props) ;
+        showLoader() ;
+    }
+    componentDidMount(){
+        setTimeout(() => hideLoader(), 1500) ;
+    }
 
     render(){
         return(

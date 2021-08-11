@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './Header.css' ;
 import Logo from '../Logo/Logo' ;
 import { MyContext } from '../MyContext';
+import { NavLink } from 'react-router-dom';
 var FontAwesome = require('react-fontawesome');
 
 class Header extends Component {
@@ -19,9 +20,9 @@ class Header extends Component {
                     </form>
                     <nav id="primary-menu">
                         <ul>
-                            <li><a href="#" className="active">Actualités</a></li>
-                            <li><a href="#">Profil</a></li>
-                            <li><a href="#">Groupes</a></li>
+                            <li><NavLink to="/feed" activeClassName="active">Actualités</NavLink></li>
+                            <li><NavLink to="/profile" activeClassName="active">Profil</NavLink></li>
+                            <li><NavLink to="/login" activeClassName="active">Se connecter</NavLink></li>
                             <li><button className="btn-rounded" onClick={() => this.context.newPostStatusHandler(true)}>Poser une question</button></li>
                         </ul>
                     </nav>
