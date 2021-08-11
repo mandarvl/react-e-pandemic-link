@@ -1,5 +1,7 @@
 body{
     background-color: rgb(233, 233, 233);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a{

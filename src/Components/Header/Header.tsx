@@ -21,7 +21,6 @@ class Header extends Component {
                         <ul>
                             <li><a href="#" className="active">Actualités</a></li>
                             <li><a href="#">Profil</a></li>
-                            <li><a href="#">Messages</a></li>
                             <li><a href="#">Groupes</a></li>
                             <li><button className="btn-rounded" onClick={() => this.context.newPostStatusHandler(true)}>Poser une question</button></li>
                         </ul>

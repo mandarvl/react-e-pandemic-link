@@ -11,10 +11,9 @@ class NewPost extends Component{
     descInput: any ;
 
     createPost(){
-        const length = this.context.posts.length ;
-        const lastId = this.context.posts[length - 1].id ;
-        let newPost = new Post(lastId+1, '', 1, 'A l\'instant', this.titleInput.value, this.descInput.value, Number(this.groupSelect.value), 0, 0) ;
-        console.log(newPost) ;
+        const lastId = this.context.getLastId(this.context.posts) ;
+        let newPost = new Post(lastId, '', 1, 'A l\'instant', this.titleInput.value, this.descInput.value, Number(this.groupSelect.value), 0, 0) ;
+        
         this.context.addPost(newPost) ;
         this.context.newPostStatusHandler(false) ;
 

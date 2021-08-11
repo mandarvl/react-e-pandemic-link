@@ -6,15 +6,14 @@ import { MyContext } from '../MyContext';
 import { User } from '../../models/User';
 import { _Comment } from '../../models/_Comment';
 import CommentList from '../CommentList/CommentList';
-import ReactDOM from 'react-dom';
 var FontAwesome = require('react-fontawesome') ;
 
-class SinglePost extends Component<{currentPost:Post}>{
+class SinglePost extends Component<{currentPost:Post, maximize: boolean}>{
     isLiked:boolean = false ;
     isDisliked: boolean = false ;
     commentsContainer:any ;
     state = {
-        isCommentsClosed: true
+        isCommentsClosed: !this.props.maximize
     }
 
     performLike(){
@@ -60,7 +59,9 @@ class SinglePost extends Component<{currentPost:Post}>{
     }
 
     componentDidUpdate(){
-        let comDiv = ReactDOM.findDOMNode(this.commentsContainer) as HTMLElement ;
+        if(this.commentsContainer === undefined)
+            return ;
+        let comDiv = this.commentsContainer as HTMLElement ;
         let content:HTMLElement = comDiv.querySelector(".content") as HTMLElement ;
         comDiv.style.height = content.clientHeight+20+"px" ;
     }
@@ -68,6 +69,13 @@ class SinglePost extends Component<{currentPost:Post}>{
     render(){
         let author:User = this.context.getUserById(this.props.currentPost.authorId) ;
         let myComments:_Comment[] = this.context.getCommentsByPostId(this.props.currentPost.id) ;
+        let description = this.props.currentPost.description ;
+        const max = 100 ;
+        
+        if(this.state.isCommentsClosed && description.length > max){
+            description = description.substring(0, max).trimEnd().concat("...") ;
+        }
+
         return (
             <div className="panel post">
                 <div className="user-header">
@@ -85,7 +93,7 @@ class SinglePost extends Component<{currentPost:Post}>{
                 <div className="post-content">
                     <h5>{this.props.currentPost.title}</h5>
                     <p>
-                    {this.props.currentPost.description}
+                    {description}
                     </p>
                 </div>
                 <div className="post-footer">
@@ -103,7 +111,7 @@ class SinglePost extends Component<{currentPost:Post}>{
                         <li><a onClick={(e) => this.toggleComments(e)} href="#"><FontAwesome name="comment-o" /> <span className="value">{myComments.length}</span></a></li>
                     </ul>
                 </div>
-                <CommentList ref={component => this.commentsContainer = component} comments={myComments} post={this.props.currentPost} show={!this.state.isCommentsClosed} />
+                <CommentList innerRef={this.commentsContainer} comments={myComments} post={this.props.currentPost} show={!this.state.isCommentsClosed} />
             </div>
         ) ;
     }

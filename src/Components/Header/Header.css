@@ -29,6 +29,15 @@ header{
 .site-logo{
     margin: -4px 35px 0 0;
     align-self: center;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+}
+
+.site-logo:hover{
+    color:#fff ;
 }
 
 #primary-menu{

@@ -37,10 +37,18 @@ class App extends Component {
       new _Comment(8, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "55m", 3, 2)
     ],
     addPost:(toAdd: Post) => {
-      const updatedList = this.state.posts ;
-      updatedList.push(toAdd) ;
+      let update = this.state.posts.slice(0) ;
+      update.push(toAdd) ;
       this.setState({
-        posts: updatedList
+        posts: update
+      }) ;
+    },
+    addComment:(toAdd: _Comment) => {
+      let update = this.state.comments.slice(0) ;
+      update.push(toAdd) ;
+      console.log(update) ;
+      this.setState({
+        comments: update
       }) ;
     },
     getUserById(id: number):User{
@@ -71,7 +79,10 @@ class App extends Component {
         }
       ) as _Comment[] ;
     },
-    showNewPostModal: false,
+    getLastId(arr: any):number{
+      const length = arr.length ;
+      return arr[length - 1].id +1 ;
+    },
     newPostStatusHandler: (newPostState: boolean) => {
       this.setState({
         showNewPostModal: newPostState
@@ -84,7 +95,8 @@ class App extends Component {
       this.setState({
         posts: newPostList
       }) ;
-    }
+    },
+    showNewPostModal: false
   }
 
   render(){
@@ -93,7 +105,10 @@ class App extends Component {
         <MyContext.Provider value={this.state}>
           <Header/>
           <Feed/>
-          <NewPost />
+          {
+            this.state.showNewPostModal?<NewPost />:null
+          }
+          
         </MyContext.Provider>
         
       </div>
