@@ -3,7 +3,20 @@
     color: #fff ;
     text-decoration: none;
     font-weight: bold;
+    text-shadow: 0 0 6px rgba(34, 34, 34, 0.7) ;
+}
+
+.site-logo.normal{
     font-size: 1.5em ;
+}
+
+.site-logo.large{
+    font-size: 2.5em ;
+}
+
+.site-logo.invert{
+    color: rgb(43, 43, 43) ;
+    text-shadow: none;
 }
 
 .site-logo>.highlight{

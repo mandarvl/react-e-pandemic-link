@@ -39,7 +39,7 @@ class CommentList extends Component<{comments: _Comment[], post: Post, show: boo
         e.preventDefault() ;
         console.log(e) ;
         let textarea = e.target[0] as HTMLInputElement ;
-        let newCom = new _Comment(this.context.getLastId(this.context.comments), textarea.value, "1m", 1, this.props.post.id) ;
+        let newCom = new _Comment(this.context.getLastId(this.context.comments), textarea.value, "1m", this.context.loggedUser.id, this.props.post.id) ;
         this.context.addComment(newCom) ;
         textarea.value = "" ;
     }

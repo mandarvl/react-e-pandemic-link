@@ -8,7 +8,10 @@ const MyContext = React.createContext({
     groups: [] as Group[],
     showNewPostModal: false,
     newPostStatusHandler: (newValue: boolean) => {},
-    postModifHandler: (id:number, newValue: Post) => {}
+    postModifHandler: (id:number, newValue: Post) => {},
+    loggedUser: null,
+    login: (user:User) => {},
+    logout: () => {}
 }) ;
 
 export {MyContext} ;

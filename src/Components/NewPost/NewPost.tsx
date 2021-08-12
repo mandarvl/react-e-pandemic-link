@@ -12,7 +12,7 @@ class NewPost extends Component{
 
     createPost(){
         const lastId = this.context.getLastId(this.context.posts) ;
-        let newPost = new Post(lastId, '', 1, 'A l\'instant', this.titleInput.value, this.descInput.value, Number(this.groupSelect.value), 0, 0) ;
+        let newPost = new Post(lastId, '', this.context.loggedUser.id, 'A l\'instant', this.titleInput.value, this.descInput.value, Number(this.groupSelect.value), 0, 0) ;
         
         this.context.addPost(newPost) ;
         this.context.newPostStatusHandler(false) ;
@@ -36,10 +36,10 @@ class NewPost extends Component{
                         <form onSubmit={(e) => {e.preventDefault() ; this.createPost()}}>
                             <div className="user-header disabled">
                                 <div className="pdp-container">
-                                    <img src="assets/images/pdp/1.jpg" alt="Pdp" />
+                                    <img src={this.context.loggedUser.pdpPath} alt="Pdp" />
                                 </div>
                                 <div className="side-info inline-flex">
-                                    <span className="name">Manda Ravalison</span>
+                                    <span className="name">{this.context.loggedUser.GetFullName()}</span>
                                     <FontAwesome name="caret-right" />
                                     <div className="custom-select">
                                         <select name="group" required ref={node => this.groupSelect = node}>

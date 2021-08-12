@@ -5,9 +5,9 @@ import { _Comment } from "../models/_Comment"
 
 export class Data{
     static users: User[] = [
-        new User(1, "Octavia", "Blake", "assets/images/pdp/1.jpg" , "Follow me if you want professional's fashion and beauty advices"),
-        new User(2, "Clarke", "Gryffin", "assets/images/pdp/2.jpg", "Reading book is my passion <3"),
-        new User(3, "Bellamy", "Blake", "assets/images/pdp/3.jpg", "Welcome to my profile. No code, no life")
+        new User(1, "Octavia", "Blake", "assets/images/pdp/1.jpg" , "octaviablake@gmail.com", "motdepasse"),
+        new User(2, "Clarke", "Gryffin", "assets/images/pdp/2.jpg", "clarke@gmail.com", "wanheda"),
+        new User(3, "Bellamy", "Blake", "assets/images/pdp/3.jpg", "bellamy@gmail.com", "trikru1234")
     ] ;
 
     static posts: Post[] = [

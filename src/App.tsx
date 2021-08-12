@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './Components/Header/Header' ;
-import Feed from './Components/Feed/Feed' ;
 import { Post } from './models/Post';
 import { User } from './models/User' ;
 import { Group } from './models/Group' ;
@@ -10,9 +9,10 @@ import NewPost from './Components/NewPost/NewPost';
 import { _Comment } from './models/_Comment';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Data } from './Data/data';
-import Login from './Components/Login/Login';
+import Login from './Components/Authentification/Authentification';
 import Error from './Components/Error/Error';
 import AppLoader, { hideLoader, loaderRef, showLoader } from './Components/AppLoader/AppLoader';
+import Home from './Components/Home/Home';
 
 class App extends Component{
   state = {
@@ -85,7 +85,7 @@ class App extends Component{
     login: (user: User) => {
       this.setState({
         loggedUser: user
-      })
+      }) ;
     },
     logout: () => {
       this.setState({
@@ -108,9 +108,9 @@ class App extends Component{
       <div className="App">
         <MyContext.Provider value={this.state}>
           <Router>
-            <Header/>
+            {this.state.loggedUser !== null?<Header/>:null}
             <Switch>
-              <Route path="/feed" component={Feed}></Route>
+              <Route path="/" exact><Home isLogged={this.state.loggedUser !== null}/></Route>
               <Route path="/login" component={Login}></Route>
               <Route component={Error}></Route>
             </Switch>

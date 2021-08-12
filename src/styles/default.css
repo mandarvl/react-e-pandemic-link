@@ -16,8 +16,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #353535 ;
+  color: #444444 ;
   font-size: 15px ;
+  line-height: 1.9em;
 }
 
 div, form, section, article, header, footer{

@@ -11,7 +11,7 @@ class Header extends Component {
         return (
             <header>
                 <div className="wrapper" id="header-content">
-                    <Logo />
+                    <Logo invert={false} size="normal" />
                     <form className="header-search">
                         <input type="text" className="text" placeholder="Rechercher..."/>
                         <button type="submit" className="btn-icon">
@@ -20,7 +20,7 @@ class Header extends Component {
                     </form>
                     <nav id="primary-menu">
                         <ul>
-                            <li><NavLink to="/feed" activeClassName="active">Actualités</NavLink></li>
+                            <li><NavLink exact to="/" activeClassName="active">Actualités</NavLink></li>
                             <li><NavLink to="/profile" activeClassName="active">Profil</NavLink></li>
                             <li><NavLink to="/login" activeClassName="active">Se connecter</NavLink></li>
                             <li><button className="btn-rounded" onClick={() => this.context.newPostStatusHandler(true)}>Poser une question</button></li>

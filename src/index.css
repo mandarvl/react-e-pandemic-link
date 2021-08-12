@@ -156,6 +156,10 @@ button:hover, input[type="submit"]:hover, [class~="btn-"]:hover{
     color: rgb(170, 10, 10) ;
 }
 
+.small{
+    font-size: .9em;
+}
+
 /* CUSTOM SELECT
 ---------------------------------- */
 :root {
@@ -238,7 +242,13 @@ select,
  
 .form-control{
     position: relative;
-    margin: 15px 0;
+    margin: 20px 0;
+}
+
+.form-control.two-separation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .form-control input:not(input[type="submit"]), .form-control textarea{

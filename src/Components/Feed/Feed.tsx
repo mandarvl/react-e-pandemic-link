@@ -49,9 +49,9 @@ class Feed extends Component{
                         <div className="panel">
                             <div className="user-header disabled">
                                 <div className="pdp-container small">
-                                    <img src="assets/images/pdp/1.jpg" alt="Pdp" />
+                                    <img src={this.context.loggedUser.pdpPath} alt="Pdp" />
                                 </div>
-                                <span className="side-info name">Manda Ravalison</span>
+                                <span className="side-info name">{ this.context.loggedUser.GetFullName() }</span>
                             </div>
                             <h4 className="grey editable" onClick={() => {
                                 this.context.newPostStatusHandler(true) ;
