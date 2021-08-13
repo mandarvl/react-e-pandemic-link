@@ -20,7 +20,6 @@ class NewPost extends Component{
         this.groupSelect.value = this.groupSelect.querySelector("option:first-child").value ;
         this.titleInput.value = "" ;
         this.descInput.value = "" ;
-        this.context.setKeyword("") ;
     }
 
     render(){
@@ -34,10 +33,10 @@ class NewPost extends Component{
                         }} />
                     </div>
                     <div className="modal-body small-margin-y">
-                        <form onSubmit={(e) => {e.preventDefault() ; this.createPost()}}>
+et                        <form onSubmit={(e) => {e.preventDefault() ; this.createPost()}}>
                             <div className="user-header disabled">
                                 <div className="pdp-container">
-                                    <img src={this.context.loggedUser.pdpPath} alt="Pdp" />
+                                    <img src={window.location.origin+"/"+this.context.loggedUser.pdpPath} alt="Pdp" />
                                 </div>
                                 <div className="side-info inline-flex">
                                     <span className="name">{this.context.loggedUser.GetFullName()}</span>
