@@ -6,14 +6,21 @@ import { MyContext } from '../MyContext';
 import { User } from '../../models/User';
 import { _Comment } from '../../models/_Comment';
 import CommentList from '../CommentList/CommentList';
+import { NavLink } from 'react-router-dom';
 var FontAwesome = require('react-fontawesome') ;
 
-class SinglePost extends Component<{currentPost:Post, maximize: boolean}>{
+class SinglePost extends Component<{currentPost:Post, maximize: boolean, fromView: boolean}>{
     isLiked:boolean = false ;
     isDisliked: boolean = false ;
-    commentsContainer:any ;
+    
     state = {
-        isCommentsClosed: !this.props.maximize
+        isCommentsClosed: !this.props.maximize,
+    }
+
+    commentsContainer: any ;
+
+    setCommentsContainer = (elem: any) => {
+        this.commentsContainer = elem ;
     }
 
     performLike(){
@@ -46,23 +53,29 @@ class SinglePost extends Component<{currentPost:Post, maximize: boolean}>{
     }
 
     toggleComments(event:any){
-        event.preventDefault() ;
-        let a = event.target as HTMLElement ;
-        if(a.nodeName.toLowerCase() !== "a"){
-            a = a.parentNode as HTMLElement ;
-        }
+        if(!this.props.fromView){
 
-        a.classList.toggle("active") ;
-        this.setState({
-            isCommentsClosed: !this.state.isCommentsClosed
-        }) ;
+            let a = event.target as HTMLElement ;
+            if(a.nodeName.toLowerCase() !== "a"){
+                a = a.parentNode as HTMLElement ;
+            }
+
+            a.classList.toggle("active") ;
+            this.setState({
+                isCommentsClosed: !this.state.isCommentsClosed
+            }) ;
+        }
     }
 
     componentDidUpdate(){
-        if(this.commentsContainer === undefined)
+        if(this.commentsContainer === undefined || this.props.fromView)
             return ;
-        let comDiv = this.commentsContainer as HTMLElement ;
+        
+        let comDiv = this.commentsContainer as unknown as HTMLElement ;
         let content:HTMLElement = comDiv.querySelector(".content") as HTMLElement ;
+        let viewport = comDiv.querySelector(".viewport") as HTMLElement ;
+        
+        viewport.setAttribute("style", "max-height: 500px") ;
         comDiv.style.height = content.clientHeight+20+"px" ;
     }
 
@@ -80,7 +93,7 @@ class SinglePost extends Component<{currentPost:Post, maximize: boolean}>{
             <div className="panel post">
                 <div className="user-header">
                     <div className="pdp-container">
-                        <img className="object-fit-cover" src={author.pdpPath} alt="Pdp" />
+                        <img className="object-fit-cover" src={window.location.origin+"/"+author.pdpPath} alt="Pdp" />
                     </div>
                     <div className="side-info">
                         <p className="name">{author.GetFullName()}</p>
@@ -91,7 +104,7 @@ class SinglePost extends Component<{currentPost:Post, maximize: boolean}>{
                     </div>
                 </div>
                 <div className="post-content">
-                    <h5>{this.props.currentPost.title}</h5>
+                    <h5><NavLink to={"/post/"+this.props.currentPost.id}>{this.props.currentPost.title}</NavLink></h5>
                     <p>
                     {description}
                     </p>
@@ -108,10 +121,10 @@ class SinglePost extends Component<{currentPost:Post, maximize: boolean}>{
                                 this.performDislike() ;
                             }
                         } href="#" className={this.isDisliked?"active":""}><FontAwesome name="thumbs-o-down" /> <span className="value">{this.props.currentPost.dislikes}</span></a></li>
-                        <li><a onClick={(e) => this.toggleComments(e)} href="#"><FontAwesome name="comment-o" /> <span className="value">{myComments.length}</span></a></li>
+                        <li><a onClick={(e) => this.toggleComments(e)} href={"#form-"+this.props.currentPost.id}><FontAwesome name="comment-o" /> <span className="value">{myComments.length}</span></a></li>
                     </ul>
                 </div>
-                <CommentList innerRef={this.commentsContainer} comments={myComments} post={this.props.currentPost} show={!this.state.isCommentsClosed} />
+                <CommentList setContainer={(val: any) => this.setCommentsContainer(val)} comments={myComments} post={this.props.currentPost} show={!this.state.isCommentsClosed} />
             </div>
         ) ;
     }

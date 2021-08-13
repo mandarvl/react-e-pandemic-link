@@ -5,11 +5,10 @@ import { MyContext } from '../MyContext';
 import SingleComment from '../SingleComment/SingleComment';
 import './CommentList.css' ;
 
-class CommentList extends Component<{comments: _Comment[], post: Post, show: boolean, innerRef:any}>{
+class CommentList extends Component<{comments: _Comment[], post: Post, show: boolean, setContainer:any}>{
     render(){
-        
         return (
-            <div ref={this.props.innerRef} className={this.props.show?"comments": "comments closed"}>
+            <div ref={(node) => this.props.setContainer(node)} className={this.props.show?"comments": "comments closed"}>
                 <div className="content">
                     <h5>Réponses</h5>
                     <div className="viewport">
@@ -19,7 +18,7 @@ class CommentList extends Component<{comments: _Comment[], post: Post, show: boo
                         { 
                         this.props.comments.length === 0? <p className="small-margin-y"><i>Aucune réponse pour l'instant.</i></p>:<br/>
                         }
-                        <form onSubmit={this.createComment.bind(this)}>
+                        <form id={"form-"+this.props.post.id} onSubmit={this.createComment.bind(this)}>
                             <p>Aidez cette personne en répondant à sa question</p>
                             <div className="form-control">
                                 <textarea className="input100" name="answer" required placeholder="Entrer votre réponse..."></textarea>

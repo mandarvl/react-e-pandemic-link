@@ -35,6 +35,7 @@ class Header extends Component {
                         </ul>):
                         (
                         <ul>
+                            <li><NavLink exact to="/">Revenir à la page d'accueil</NavLink></li>
                             <li><NavLink to="/login" className="btn-rounded">Se connecter</NavLink></li>
                         </ul>
                         )

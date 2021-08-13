@@ -61,7 +61,7 @@ class Feed extends Component{
                         </div>
                         { 
                             this.context.posts.filter((x:Post) => x.title.toLowerCase().includes(this.context.keyword.toLowerCase())).reverse().map((item:Post) => 
-                                <SinglePost key={item.id} currentPost={item} maximize={false} />
+                                <SinglePost key={item.id} fromView={false}  currentPost={item} maximize={false} />
                             )
                         }
                     </div>

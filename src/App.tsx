@@ -12,6 +12,7 @@ import { Data } from './Data/data';
 import Error from './Components/Error/Error';
 import AppLoader, { hideLoader, loaderRef, showLoader } from './Components/AppLoader/AppLoader';
 import Home from './Components/Home/Home';
+import ViewPost from './Components/ViewPost/ViewPost';
 
 class App extends Component{
   state = {
@@ -53,6 +54,13 @@ class App extends Component{
           return group.id === id
         }
       ) as Group ;
+    },
+    getPostById(id: number):Post{
+      return this.posts.find(
+        (post) => {
+          return post.id === id
+        }
+      ) as Post ;
     },
     getPostsByUserId(id: number):Post[]{
         return this.posts.filter(
@@ -123,10 +131,11 @@ class App extends Component{
       <div className="App">
         <MyContext.Provider value={this.state}>
           <Router>
-            {this.state.loggedUser !== null || this.state.errorExist?<Header/>:null}
+            <Header/>
             <Switch>
               <Route path="/" exact><Home isLogged={this.state.loggedUser !== null}/></Route>
               <Route path="/login"><Home isLogged={this.state.loggedUser !== null}/></Route>
+              <Route path="/post/:id" component={ViewPost} />
               <Route component={Error}></Route>
             </Switch>
           </Router>

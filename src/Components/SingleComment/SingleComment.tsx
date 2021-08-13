@@ -11,7 +11,7 @@ class SingleComment extends Component<{post: Post, currentComment: _Comment}>{
             <div className="comment">
                 <div className="user-header">
                     <div className="pdp-container small">
-                        <img className="object-fit-cover" src={author.pdpPath} alt="Pdp" />
+                        <img className="object-fit-cover" src={window.location.origin+"/"+author.pdpPath} alt="Pdp" />
                     </div>
                     <div className="side-info">
                         <p className="name">{author.GetFullName()}</p>

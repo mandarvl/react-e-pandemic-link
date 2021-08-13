@@ -84,6 +84,10 @@ button:hover, input[type="submit"]:hover, [class^="btn-"]:hover{
     margin-bottom: 10px;
 }
 
+.full-padding{
+    padding: 20px;
+}
+
 .small-margin-y{
     margin: 15px 0;
 }
