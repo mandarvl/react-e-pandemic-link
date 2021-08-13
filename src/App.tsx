@@ -14,6 +14,7 @@ import AppLoader, { hideLoader, loaderRef, showLoader } from './Components/AppLo
 import Home from './Components/Home/Home';
 import ViewPost from './Components/ViewPost/ViewPost';
 import Search from './Components/Search/Search';
+import Footer from './Components/Footer/Footer';
 
 class App extends Component{
   state = {
@@ -128,20 +129,22 @@ class App extends Component{
       <div className="App">
         <MyContext.Provider value={this.state}>
           <Router>
-            <Header />
-            <Switch>
-              <Route path="/" exact><Home isLogged={this.state.loggedUser !== null}/></Route>
-              <Route path="/login"><Home isLogged={this.state.loggedUser !== null}/></Route>
-              <Route path="/post/:id" component={ViewPost} />
-              <Route path="/search/:keyword" component={Search} />
-              <Route component={Error}></Route>
-            </Switch>
+            <div id="content">
+              <Header />
+              <Switch>
+                  <Route path="/" exact><Home isLogged={this.state.loggedUser !== null}/></Route>
+                  <Route path="/login"><Home isLogged={this.state.loggedUser !== null}/></Route>
+                  <Route path="/post/:id" component={ViewPost} />
+                  <Route path="/search/:keyword" component={Search} />
+                  <Route component={Error}></Route>
+              </Switch>
+            </div>
           </Router>
           {
             this.state.showNewPostModal?<NewPost />:null
           }
-          
         </MyContext.Provider>
+        <Footer />
         <AppLoader ref={loaderRef} />
       </div>
     );

@@ -22,7 +22,12 @@ class Authentification extends Component{
     }
     
     componentDidMount(){
+        document.querySelector("header")?.classList.add("hidden") ;
         hideLoader() ;
+    }
+
+    componentWillUnmount(){
+        document.querySelector("header")?.classList.remove("hidden") ;
     }
 
     render(){

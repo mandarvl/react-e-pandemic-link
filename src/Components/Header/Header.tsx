@@ -38,12 +38,16 @@ class Header extends Component<HeaderProps> {
                         {this.context.loggedUser !== null?
                         (<ul>
                             <li><NavLink exact to="/" activeClassName="active">Actualités</NavLink></li>
-                            <li><a href="/logout" onClick={(e)=>{e.preventDefault() ; this.context.logout()}}>Se déconnecter</a></li>
+                            <li><a href="/logout" onClick={
+                                (e)=>{
+                                    e.preventDefault() ; 
+                                    this.context.logout() ;
+                                    this.props.history.push("/") ;
+                                }}>Se déconnecter</a></li>
                             <li><button className="btn-rounded" onClick={() => this.context.newPostStatusHandler(true)}>Poser une question</button></li>
                         </ul>):
                         (
                         <ul>
-                            <li><NavLink exact to="/">Revenir à la page d'accueil</NavLink></li>
                             <li><NavLink to="/login" className="btn-rounded">Se connecter</NavLink></li>
                         </ul>
                         )

@@ -62,8 +62,8 @@ class Feed extends Component{
                             </div>
                             { 
                                 this.context.posts.slice(0).reverse().map((item:Post) => 
-                                    <div className="panel">
-                                        <SinglePost key={item.id} fromView={false}  currentPost={item} maximize={false} />
+                                    <div className="panel" key={item.id}>
+                                        <SinglePost fromView={false}  currentPost={item} maximize={false} />
                                     </div>
                                 )
                             }

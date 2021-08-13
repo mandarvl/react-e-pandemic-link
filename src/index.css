@@ -1,6 +1,16 @@
-body{
+html, body, #root, .App{
+    height: 100%;
+}
+
+.App{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    flex-direction: column;
+}
+
+.App #content{
+    flex-grow: 1;
 }
 
 body.grey-bg{
