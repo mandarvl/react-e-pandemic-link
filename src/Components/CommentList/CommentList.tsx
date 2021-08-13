@@ -1,4 +1,5 @@
 import {Component} from 'react' ;
+import { NavLink } from 'react-router-dom';
 import { Post } from '../../models/Post';
 import { _Comment } from '../../models/_Comment';
 import { MyContext } from '../MyContext';
@@ -18,7 +19,8 @@ class CommentList extends Component<{comments: _Comment[], post: Post, show: boo
                         { 
                         this.props.comments.length === 0? <p className="small-margin-y"><i>Aucune réponse pour l'instant.</i></p>:<br/>
                         }
-                        <form id={"form-"+this.props.post.id} onSubmit={this.createComment.bind(this)}>
+                        {this.context.loggedUser !== null?
+                        (<form id={"form-"+this.props.post.id} onSubmit={this.createComment.bind(this)}>
                             <p>Aidez cette personne en répondant à sa question</p>
                             <div className="form-control">
                                 <textarea className="input100" name="answer" required placeholder="Entrer votre réponse..."></textarea>
@@ -28,7 +30,9 @@ class CommentList extends Component<{comments: _Comment[], post: Post, show: boo
                             <div className="form-control">
                                 <input type="submit" value="Envoyer" />
                             </div>
-                        </form>
+                        </form>) : (
+                            <p>Vous devez vous <NavLink to="/login"><span className="highlight">connecter</span></NavLink> pour donner une réponse</p>
+                        ) }
                     </div>
                 </div>
             </div>

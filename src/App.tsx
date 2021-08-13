@@ -13,6 +13,7 @@ import Error from './Components/Error/Error';
 import AppLoader, { hideLoader, loaderRef, showLoader } from './Components/AppLoader/AppLoader';
 import Home from './Components/Home/Home';
 import ViewPost from './Components/ViewPost/ViewPost';
+import Search from './Components/Search/Search';
 
 class App extends Component{
   state = {
@@ -105,10 +106,6 @@ class App extends Component{
         loggedUser: null
       })
     },
-    keyword: "",
-    setKeyword: (k: string) => {
-      this.setState({keyword: k}) ;
-    },
     errorExist: false,
     errorExistHandler: (val: boolean) => {
       this.setState({
@@ -131,11 +128,12 @@ class App extends Component{
       <div className="App">
         <MyContext.Provider value={this.state}>
           <Router>
-            <Header/>
+            <Header />
             <Switch>
               <Route path="/" exact><Home isLogged={this.state.loggedUser !== null}/></Route>
               <Route path="/login"><Home isLogged={this.state.loggedUser !== null}/></Route>
               <Route path="/post/:id" component={ViewPost} />
+              <Route path="/search/:keyword" component={Search} />
               <Route component={Error}></Route>
             </Switch>
           </Router>

@@ -1,0 +1,12 @@
+.text-lead{
+    margin-bottom: 30px ;
+}
+
+#search .list-result{
+    border-bottom: 1px solid rgb(207, 207, 207) ;
+    margin-bottom: 15px ;
+}
+
+#search .list-result:last-of-type{
+    border: 0 ;
+}

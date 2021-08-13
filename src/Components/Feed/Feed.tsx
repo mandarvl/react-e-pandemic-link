@@ -6,6 +6,7 @@ import { MyContext } from '../MyContext' ;
 import { Post } from '../../models/Post';
 import { Group } from '../../models/Group';
 import { hideLoader, showLoader } from '../AppLoader/AppLoader';
+import SuggestGroup from '../SuggestGroup/SuggestGroup';
 var FontAwesome = require('react-fontawesome');
 
 class Feed extends Component{
@@ -15,7 +16,6 @@ class Feed extends Component{
         showLoader() ;
     }
     componentDidMount(){
-        this.context.setKeyword("") ;
         setTimeout(() => hideLoader(), 1000) ;
     }
 
@@ -61,7 +61,7 @@ class Feed extends Component{
                                 }}>Quelle est votre question?</h4>
                             </div>
                             { 
-                                this.context.posts.filter((x:Post) => x.title.toLowerCase().includes(this.context.keyword.toLowerCase())).reverse().map((item:Post) => 
+                                this.context.posts.slice(0).reverse().map((item:Post) => 
                                     <div className="panel">
                                         <SinglePost key={item.id} fromView={false}  currentPost={item} maximize={false} />
                                     </div>
@@ -70,11 +70,8 @@ class Feed extends Component{
                         </div>
                     </div>
                     <div className="col-25 flex-item">
-                        <div className="panel right-side">
-                            <h5 className="panel-title">Suggérées pour vous</h5>
-                            { this.context.groups.map((item:Group) => 
-                                <SingleGroup key={item.id} currentGroup={item} showDescription={true}/>    
-                            )}
+                        <div className="panel">
+                            <SuggestGroup />
                         </div>
                     </div>
                 </div>

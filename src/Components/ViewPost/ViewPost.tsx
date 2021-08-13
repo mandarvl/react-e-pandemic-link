@@ -2,22 +2,40 @@ import { Component } from 'react' ;
 import { Post } from '../../models/Post';
 import SinglePost from '../SinglePost/SinglePost';
 import { MyContext } from '../MyContext';
-import { NavLink } from 'react-router-dom';
+import { NavLink, RouteComponentProps } from 'react-router-dom';
 
-class ViewPost extends Component<{match: {params:any}}>{
+interface ViewPostRouterProps {
+    id: any;
+}
+  
+interface ViewPostProps extends RouteComponentProps<ViewPostRouterProps> {
+
+}
+
+class ViewPost extends Component<ViewPostProps>{
     state = {
-        selectedPost: null
+        selectedPost: new Post()
     }
 
-    componentDidMount(){
+    loadSelectedPost(){
         const id = Number(this.props.match.params.id) ;
         this.setState({
             selectedPost: this.context.getPostById(id)
         }) ;
     }
 
+    componentDidMount(){
+        this.loadSelectedPost() ;
+    }
+
+    componentDidUpdate(nextProps:ViewPostProps){
+        if (nextProps.location !== this.props.location) {
+            this.loadSelectedPost() ;
+        }
+    }
+
     render(){
-        if(this.state.selectedPost === null || this.state.selectedPost === undefined){
+        if(this.state.selectedPost.id === 0 || this.state.selectedPost === undefined){
             return(
                 <div></div>
             )  ;     
@@ -29,9 +47,9 @@ class ViewPost extends Component<{match: {params:any}}>{
                             <SinglePost maximize={true} fromView={true} currentPost={this.state.selectedPost as unknown as Post} />
                         </div>
                         <div className="col-25 flex-item">
-                            <div className="right-side">
+                            <div className="right-side sticky">
                                 <h5 className="panel-title">Questions similaires</h5>
-                                { this.context.posts.map((item:Post) => {
+                                { this.context.posts.filter((x:Post) => x.id !== this.state.selectedPost.id).map((item:Post) => {
                                     return (
                                         <div key={item.id}>
                                             <NavLink to={"/post/"+item.id} >{item.title}</NavLink>

@@ -54,7 +54,7 @@ class SinglePost extends Component<{currentPost:Post, maximize: boolean, fromVie
 
     toggleComments(event:any){
         if(!this.props.fromView){
-
+            event.preventDefault() ;
             let a = event.target as HTMLElement ;
             if(a.nodeName.toLowerCase() !== "a"){
                 a = a.parentNode as HTMLElement ;
