@@ -15,13 +15,14 @@ class Feed extends Component{
         showLoader() ;
     }
     componentDidMount(){
+        this.context.setKeyword("") ;
         setTimeout(() => hideLoader(), 1500) ;
     }
 
     render(){
         return(
             <div className="wrapper flex-container">
-                <div className="col-25 flex-item">
+                <div className="col-25 flex-item sticky">
                     <div className="panel transparent group-sidebar">
                         <h5 className="panel-title">Vos groupes</h5>
                         <a href="/" className="group-item btn-semi-transparent">

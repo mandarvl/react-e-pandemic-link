@@ -11,9 +11,9 @@ export class Data{
     ] ;
 
     static posts: Post[] = [
-        new Post(1, "assets/images/1.jpg", 3, "5h", "Pourquoi?", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 1, 5, 1),
-        new Post(2, "assets/images/3.jpg", 2, "12h", "Comment?", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 2, 8, 1),
-        new Post(3, "assets/images/4.jpg", 1, "5h", "Est-ce vrai?", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 1, 5, 4)
+        new Post(1, "assets/images/1.jpg", 1, "5h", "Comment se transmet le coronavirus ?", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 1, 5, 1),
+        new Post(2, "assets/images/3.jpg", 2, "12h", "Où dois-je me rendre pour me faire vacciner ?", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 2, 8, 1),
+        new Post(3, "assets/images/4.jpg", 1, "5h", "Que faire face aux premiers signes ?", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 1, 5, 4)
     ] ;
     
     static groups: Group[] = [

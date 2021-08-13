@@ -27,3 +27,19 @@
 .right-side .group-item:last-child{
     border-bottom: 0;
 }
+
+.sticky{
+    position: sticky ;
+    top: 70px ;
+}
+
+.wrapper{
+    position: relative;
+}
+
+@media(max-width: 1024px){
+    .sticky{
+        position: static;
+        top: auto;
+    }
+}
