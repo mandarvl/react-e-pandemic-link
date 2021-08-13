@@ -42,12 +42,12 @@ class Login extends Component<{toggle:any}>{
                 <h5>Se connecter</h5>
                 {this.state.errorMessage != null ?<p style={{color: "red", fontSize: "14px"}}>{this.state.errorMessage}</p>:null}
                 <div className="form-control">
-                    <input type="email" name="email" required placeholder="Votre email" value={this.context.users[0].email} className="input100" />
+                    <input type="email" name="email" required placeholder="Votre email" defaultValue={this.context.users[0].email} className="input100" />
                     <span className="focus-input100-1"></span>
                     <span className="focus-input100-2"></span>
                 </div>
                 <div className="form-control">
-                    <input type="password" name="password" required placeholder="Votre mot de passe" value={this.context.users[0].mdp} className="input100" />
+                    <input type="password" name="password" required placeholder="Votre mot de passe" defaultValue={this.context.users[0].mdp} className="input100" />
                     <span className="focus-input100-1"></span>
                     <span className="focus-input100-2"></span>
                 </div>

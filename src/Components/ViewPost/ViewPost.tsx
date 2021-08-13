@@ -2,8 +2,7 @@ import { Component } from 'react' ;
 import { Post } from '../../models/Post';
 import SinglePost from '../SinglePost/SinglePost';
 import { MyContext } from '../MyContext';
-import { Group } from '../../models/Group';
-import SingleGroup from '../SingleGroup/SingleGroup';
+import { NavLink } from 'react-router-dom';
 
 class ViewPost extends Component<{match: {params:any}}>{
     state = {
@@ -24,16 +23,23 @@ class ViewPost extends Component<{match: {params:any}}>{
             )  ;     
         }else{
             return (
-                <div className="full-padding flex-container">
-                    <div className="flex-item">
-                        <SinglePost maximize={true} fromView={true} currentPost={this.state.selectedPost as unknown as Post} />
-                    </div>
-                    <div className="col-25 flex-item">
-                        <div className="panel right-side">
-                            <h5 className="panel-title">Suggérées pour vous</h5>
-                            { this.context.groups.map((item:Group) => 
-                                <SingleGroup key={item.id} currentGroup={item} showDescription={true}/>    
-                            )}
+                <div className="bg-white">
+                    <div className="full-padding wrapper flex-container">
+                        <div className="flex-item">
+                            <SinglePost maximize={true} fromView={true} currentPost={this.state.selectedPost as unknown as Post} />
+                        </div>
+                        <div className="col-25 flex-item">
+                            <div className="right-side">
+                                <h5 className="panel-title">Questions similaires</h5>
+                                { this.context.posts.map((item:Post) => {
+                                    return (
+                                        <div key={item.id}>
+                                            <NavLink to={"/post/"+item.id} >{item.title}</NavLink>
+                                        </div>
+                                    ) ;
+                                }    
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>

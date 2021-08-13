@@ -90,7 +90,7 @@ class SinglePost extends Component<{currentPost:Post, maximize: boolean, fromVie
         }
 
         return (
-            <div className="panel post">
+            <div className="post">
                 <div className="user-header">
                     <div className="pdp-container">
                         <img className="object-fit-cover" src={window.location.origin+"/"+author.pdpPath} alt="Pdp" />
@@ -104,7 +104,7 @@ class SinglePost extends Component<{currentPost:Post, maximize: boolean, fromVie
                     </div>
                 </div>
                 <div className="post-content">
-                    <h5><NavLink to={"/post/"+this.props.currentPost.id}>{this.props.currentPost.title}</NavLink></h5>
+                    <h5 className="post-title"><NavLink to={"/post/"+this.props.currentPost.id}>{this.props.currentPost.title}</NavLink></h5>
                     <p>
                     {description}
                     </p>

@@ -88,6 +88,10 @@ button:hover, input[type="submit"]:hover, [class^="btn-"]:hover{
     padding: 20px;
 }
 
+.bg-white{
+    background-color: #fff;
+}
+
 .small-margin-y{
     margin: 15px 0;
 }
