@@ -20,6 +20,7 @@ class NewPost extends Component{
         this.groupSelect.value = this.groupSelect.querySelector("option:first-child").value ;
         this.titleInput.value = "" ;
         this.descInput.value = "" ;
+        this.context.setKeyword("") ;
     }
 
     render(){

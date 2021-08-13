@@ -1,8 +1,8 @@
-html.auth{
-    height: 100%;
-}
-
-html.auth body{
+.full-bg{
+    position: fixed;
+    top: 0;
+    left: 0 ;
+    width: 100%;
     height:100% ;
     display: flex ;
     align-items: center;
@@ -11,6 +11,9 @@ html.auth body{
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
+    padding: 50px 0;
+    overflow-y: auto;
+    z-index: 9;
 }
 
 .auth-container{
@@ -44,4 +47,31 @@ html.auth body{
 
 .form-container{
     padding: 50px 80px;
+}
+
+@media(max-width: 1024px){
+    .auth-container{
+        width: 90% ;
+    }
+}
+
+@media(max-width: 940px){
+    .auth-container{
+        width: 75% ;
+        display: block ;
+    }
+
+    .auth-container .illustration{
+        display: none ;
+    }
+}
+
+@media(max-width: 640px){
+    .auth-container{
+        width: 95% ;
+    }
+
+    .form-container{
+        padding: 50px 40px;
+    }
 }

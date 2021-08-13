@@ -3,6 +3,10 @@
     margin-bottom: 20px ;
 }
 
+.group-item.btn-semi-transparent{
+    align-items: center;
+}
+
 .group-item:last-child{
     margin-bottom: 5px ;
 }

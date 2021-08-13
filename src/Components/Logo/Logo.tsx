@@ -10,7 +10,7 @@ function Logo(params:{size:string, invert:boolean}){
         cl = cl.concat(" invert") ;
 
     return(
-        <span className={cl}><span className="highlight">E</span>Pandemic Link</span>
+        <span className={cl}><span className="highlight">E</span>-Pandemic Link</span>
     ) ;
 }
 

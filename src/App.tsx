@@ -9,7 +9,6 @@ import NewPost from './Components/NewPost/NewPost';
 import { _Comment } from './models/_Comment';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Data } from './Data/data';
-import Login from './Components/Authentification/Authentification';
 import Error from './Components/Error/Error';
 import AppLoader, { hideLoader, loaderRef, showLoader } from './Components/AppLoader/AppLoader';
 import Home from './Components/Home/Home';
@@ -30,9 +29,15 @@ class App extends Component{
     addComment:(toAdd: _Comment) => {
       let update = this.state.comments.slice(0) ;
       update.push(toAdd) ;
-      console.log(update) ;
       this.setState({
         comments: update
+      }) ;
+    },
+    addUser: (toAdd: User) => {
+      let update = this.state.users.slice(0) ;
+      update.push(toAdd) ;
+      this.setState({
+        users: update
       }) ;
     },
     getUserById(id: number):User{
@@ -91,6 +96,16 @@ class App extends Component{
       this.setState({
         loggedUser: null
       })
+    },
+    keyword: "",
+    setKeyword: (k: string) => {
+      this.setState({keyword: k}) ;
+    },
+    errorExist: false,
+    errorExistHandler: (val: boolean) => {
+      this.setState({
+        errorExist: val
+      })
     }
   }
 
@@ -108,10 +123,10 @@ class App extends Component{
       <div className="App">
         <MyContext.Provider value={this.state}>
           <Router>
-            {this.state.loggedUser !== null?<Header/>:null}
+            {this.state.loggedUser !== null || this.state.errorExist?<Header/>:null}
             <Switch>
               <Route path="/" exact><Home isLogged={this.state.loggedUser !== null}/></Route>
-              <Route path="/login" component={Login}></Route>
+              <Route path="/login"><Home isLogged={this.state.loggedUser !== null}/></Route>
               <Route component={Error}></Route>
             </Switch>
           </Router>

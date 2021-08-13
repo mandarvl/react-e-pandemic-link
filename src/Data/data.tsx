@@ -18,7 +18,7 @@ export class Data{
     
     static groups: Group[] = [
         new Group(1, "Santé et bien-être", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "assets/images/post/1.jpg"),
-        new Group(2, "Sport", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "assets/images/post/2.jpg"),
+        new Group(2, "Recherches sur les vaccins", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "assets/images/post/2.jpg"),
         new Group(3, "Nouvelles sur le Coronavirus", "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "assets/images/post/3.jpg")
     ] ;
     

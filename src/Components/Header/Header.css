@@ -78,3 +78,9 @@ header{
 #primary-menu ul li a.active, #primary-menu ul li a:hover{
     color: #FB8122 ;
 }
+
+@media(max-width: 920px){
+    .header-search{
+        display:none ;
+    }
+}

@@ -24,7 +24,6 @@ class Login extends Component<{toggle:any}>{
         const user = this.context.users.find((x:User) => x.email === email.value && x.mdp === password.value) ;
         if(user !== undefined){
             await this.context.login(user) ;
-            console.log(this.context.loggedUser) ;
         }else{
             this.setState({
                 errorMessage: "L'adresse email ou le mot de passe est incorrect."

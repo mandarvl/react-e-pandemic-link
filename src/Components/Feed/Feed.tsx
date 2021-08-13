@@ -9,6 +9,7 @@ import { hideLoader, showLoader } from '../AppLoader/AppLoader';
 var FontAwesome = require('react-fontawesome');
 
 class Feed extends Component{
+
     constructor(props:any){
         super(props) ;
         showLoader() ;
@@ -58,7 +59,7 @@ class Feed extends Component{
                             }}>Quelle est votre question?</h4>
                         </div>
                         { 
-                            this.context.posts.slice(0).reverse().map((item:Post) => 
+                            this.context.posts.filter((x:Post) => x.title.toLowerCase().includes(this.context.keyword.toLowerCase())).reverse().map((item:Post) => 
                                 <SinglePost key={item.id} currentPost={item} maximize={false} />
                             )
                         }

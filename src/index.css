@@ -14,7 +14,7 @@ a:hover{
     color: #d6762d ;
 }
 
-button, input[type="submit"], [class~="btn-"]{
+button, input[type="submit"], [class^="btn-"]{
     padding: 10px 20px;
     font-size: 14px;
     font-weight: 700;
@@ -43,8 +43,9 @@ form .btn-icon{
     -o-border-radius: 0 3px 3px 0;
 }
 
-button:hover, input[type="submit"]:hover, [class~="btn-"]:hover{
+button:hover, input[type="submit"]:hover, [class^="btn-"]:hover{
     background-color: #d6762d;
+    color: #fff!important;
 }
 
 .btn-semi-transparent{
@@ -474,4 +475,18 @@ textarea.input100 {
     -moz-transition: all .5s;
     -ms-transition: all .5s;
     -o-transition: all .5s;
+}
+
+@media(max-width: 1024px){
+    .flex-container{
+        display: block ;
+    }
+
+    .flex-container>div{
+        width: 100%!important;
+    }
+
+    .wrapper{
+        width: 95%;
+    }
 }
