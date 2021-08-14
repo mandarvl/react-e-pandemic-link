@@ -4,6 +4,7 @@ import './Header.css' ;
 import Logo from '../Logo/Logo' ;
 import { MyContext } from '../MyContext';
 import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
+
 var FontAwesome = require('react-fontawesome');
 
 interface HeaderRouterProps {
@@ -22,6 +23,10 @@ class Header extends Component<HeaderProps> {
         this.props.history.push("/search/"+this.inputRef.value) ;
     }
 
+    showLogin(){
+        
+    }
+
     render(){
         return (
             <header>
@@ -35,7 +40,7 @@ class Header extends Component<HeaderProps> {
                     </form>
                     <nav id="primary-menu">
                         
-                        {this.context.loggedUser !== null?
+                        {this.context.isLogged()?
                         (<ul>
                             <li><NavLink exact to="/" activeClassName="active">Actualités</NavLink></li>
                             <li><a href="/logout" onClick={
@@ -44,11 +49,33 @@ class Header extends Component<HeaderProps> {
                                     this.context.logout() ;
                                     this.props.history.push("/") ;
                                 }}>Se déconnecter</a></li>
-                            <li><button className="btn-rounded" onClick={() => this.context.newPostStatusHandler(true)}>Poser une question</button></li>
+                            <li>
+                                <button title="Poser une question" className="btn-rounded" onClick={() => this.context.newPostStatusHandler(true)}>
+                                    <div>
+                                        <FontAwesome name="edit fa-fw" />
+                                        <span>Poser une question</span>
+                                    </div>
+                                </button>
+                            </li>
                         </ul>):
                         (
                         <ul>
-                            <li><NavLink to="/login" className="btn-rounded">Se connecter</NavLink></li>
+                            <li>
+                                <button title="Se connecter" className="btn-rounded" onClick={() => this.context.setLoadAuthComp("login")}>
+                                    <div>
+                                        <FontAwesome name="sign-in fa-fw" />
+                                        <span>Se connecter</span>
+                                    </div>
+                                </button>
+                            </li>
+                            <li>
+                                <button title="Créer un compte" className="btn-rounded" onClick={() => this.context.setLoadAuthComp("signUp")}>
+                                    <div>
+                                        <FontAwesome name="user-plus fa-fw" />
+                                        <span>Créer un compte</span>
+                                    </div>
+                                </button>
+                            </li>
                         </ul>
                         )
                         }

@@ -1,5 +1,4 @@
 import {Component} from 'react' ;
-import { NavLink } from 'react-router-dom';
 import { Post } from '../../models/Post';
 import { _Comment } from '../../models/_Comment';
 import { MyContext } from '../MyContext';
@@ -19,7 +18,7 @@ class CommentList extends Component<{comments: _Comment[], post: Post, show: boo
                         { 
                         this.props.comments.length === 0? <p className="small-margin-y"><i>Aucune réponse pour l'instant.</i></p>:<br/>
                         }
-                        {this.context.loggedUser !== null?
+                        {this.context.isLogged()?
                         (<form id={"form-"+this.props.post.id} onSubmit={this.createComment.bind(this)}>
                             <p>Aidez cette personne en répondant à sa question</p>
                             <div className="form-control">
@@ -31,7 +30,7 @@ class CommentList extends Component<{comments: _Comment[], post: Post, show: boo
                                 <input type="submit" value="Envoyer" />
                             </div>
                         </form>) : (
-                            <p>Vous devez vous <NavLink to="/login"><span className="highlight">connecter</span></NavLink> pour donner une réponse</p>
+                            <p>Vous devez vous <a href="/" onClick={(e) => {e.preventDefault() ; this.context.setLoadAuthComp("login")}}><span className="highlight">connecter</span></a> ou <a href="/" onClick={(e) => {e.preventDefault() ; this.context.setLoadAuthComp("signUp")}}><span className="highlight">créer un compte</span></a> pour donner une réponse</p>
                         ) }
                     </div>
                 </div>

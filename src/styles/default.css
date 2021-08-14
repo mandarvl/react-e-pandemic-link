@@ -21,7 +21,7 @@ body {
   line-height: 1.9em;
 }
 
-div, form, section, article, header, footer{
+form, section, article, header, footer{
   width: 100%;
 }
 
@@ -97,7 +97,7 @@ img {
 }
 
 .wrapper{  
-  width:85%;   
+  width:90%;   
   margin-left:auto;  
   margin-right:auto;
 }

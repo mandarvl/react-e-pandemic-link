@@ -22,3 +22,15 @@
 .site-logo>.highlight{
     color: #FB8122 ;
 }
+
+@media(max-width: 940px){
+    .site-logo.large{
+        font-size: 2em!important ;
+    }
+}
+
+@media(max-width: 640px){
+    .site-logo.normal{
+        font-size: 1.3em!important ;
+    }
+}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import './App.css';
 import Header from './Components/Header/Header' ;
 import { Post } from './models/Post';
@@ -15,8 +15,16 @@ import Home from './Components/Home/Home';
 import ViewPost from './Components/ViewPost/ViewPost';
 import Search from './Components/Search/Search';
 import Footer from './Components/Footer/Footer';
+import { Alert } from '@material-ui/lab' ;
+import Snackbar from '@material-ui/core/Snackbar';
+
+const FontAwesome = require('react-fontawesome') ;
+
+const LoginComponent = React.lazy(() => import('./Components/Login/Login'));
+const SignUpComponent = React.lazy(() => import('./Components/SignUp/SignUp'));
 
 class App extends Component{
+
   state = {
     posts: Data.posts,
     comments: Data.comments,
@@ -96,10 +104,22 @@ class App extends Component{
       })
     },
     showNewPostModal: false,
+    loadAuthComp: null,
+    setLoadAuthComp: (selected:string | null) => {
+      this.setState({
+        loadAuthComp : selected
+      }) ;
+    },
     loggedUser: null,
-    login: (user: User) => {
+    isLogged: ():boolean => {
+      return this.state.loggedUser !== null ;
+    },
+    login: (user: User, withMessage: boolean) => {
       this.setState({
         loggedUser: user
+      }, () => {
+        if(withMessage)
+          this.state.setSuccessMessage("Bienvenu(e) "+user.GetFullName())
       }) ;
     },
     logout: () => {
@@ -107,10 +127,16 @@ class App extends Component{
         loggedUser: null
       })
     },
-    errorExist: false,
-    errorExistHandler: (val: boolean) => {
+    errorMessage: null,
+    setErrorMessage: (val:string | null) => {
       this.setState({
-        errorExist: val
+        errorMessage: val
+      })
+    },
+    successMessage: null,
+    setSuccessMessage: (val:string | null) => {
+      this.setState({
+        successMessage: val
       })
     }
   }
@@ -126,26 +152,64 @@ class App extends Component{
 
   render(){
     return (
-      <div className="App">
-        <MyContext.Provider value={this.state}>
-          <Router>
-            <div id="content">
-              <Header />
-              <Switch>
-                  <Route path="/" exact><Home isLogged={this.state.loggedUser !== null}/></Route>
-                  <Route path="/login"><Home isLogged={this.state.loggedUser !== null}/></Route>
-                  <Route path="/post/:id" component={ViewPost} />
-                  <Route path="/search/:keyword" component={Search} />
-                  <Route component={Error}></Route>
-              </Switch>
-            </div>
-          </Router>
-          {
-            this.state.showNewPostModal?<NewPost />:null
-          }
-        </MyContext.Provider>
-        <Footer />
+      
+      <div>
+        <div className="App">
+          <MyContext.Provider value={this.state}>
+            <Router>
+              <div id="content">
+                <Header />
+                <Switch>
+                    <Route path="/" exact><Home/></Route>
+                    <Route path="/login"><Home/></Route>
+                    <Route path="/post/:id" component={ViewPost} />
+                    <Route path="/search/:keyword" component={Search} />
+                    <Route component={Error}></Route>
+                </Switch>
+              </div>
+            </Router>
+            {
+              this.state.showNewPostModal?<NewPost />:null
+            }
+            {this.state.loadAuthComp !== null ? (
+              <div className="modal">
+                <div className="modal-content animation-zoom-in container">
+                  <div className="modal-header">
+                      <h5 className="text-center modal-title">Authentification</h5>
+                      <FontAwesome className="close red-hover" name="times" onClick={() => {
+                          this.state.setLoadAuthComp(null) ;
+                      }} />
+                  </div>
+                  <div className="modal-body small-margin-y">
+                    <Suspense fallback={<div>Chargement...</div>}>
+                      {this.state.loadAuthComp === "login"?
+                      <LoginComponent toggle={() => this.state.setLoadAuthComp("signUp")} />
+                      : <SignUpComponent toggle={() => this.state.setLoadAuthComp("login")} />
+                      }
+                    </Suspense>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </MyContext.Provider>
+          <Footer />
+        </div>
         <AppLoader ref={loaderRef} />
+
+        {
+          this.state.successMessage != null?
+          <Snackbar open={true} autoHideDuration={6000} anchorOrigin={{ vertical: 'bottom', horizontal:'left' }} onClose={() => this.state.setSuccessMessage(null)}>
+            <Alert variant="filled" severity="success">{this.state.successMessage}</Alert>
+          </Snackbar>
+          : null
+        }
+        {
+          this.state.errorMessage != null?
+          <Snackbar  open={true} autoHideDuration={6000} anchorOrigin={{ vertical: 'bottom', horizontal:'left' }} onClose={() => this.state.setErrorMessage(null)}>
+            <Alert variant="filled" severity="error">{this.state.errorMessage}</Alert>
+          </Snackbar>
+          : null
+        }
       </div>
     );
   }

@@ -17,6 +17,8 @@ class NewPost extends Component{
         this.context.addPost(newPost) ;
         this.context.newPostStatusHandler(false) ;
 
+        this.context.setSuccessMessage("Votre question a été publiée.") ;
+
         this.groupSelect.value = this.groupSelect.querySelector("option:first-child").value ;
         this.titleInput.value = "" ;
         this.descInput.value = "" ;
@@ -33,7 +35,7 @@ class NewPost extends Component{
                         }} />
                     </div>
                     <div className="modal-body small-margin-y">
-et                        <form onSubmit={(e) => {e.preventDefault() ; this.createPost()}}>
+                        <form onSubmit={(e) => {e.preventDefault() ; this.createPost()}}>
                             <div className="user-header disabled">
                                 <div className="pdp-container">
                                     <img src={window.location.origin+"/"+this.context.loggedUser.pdpPath} alt="Pdp" />

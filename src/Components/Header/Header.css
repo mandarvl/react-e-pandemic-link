@@ -27,7 +27,7 @@ header{
 }
 
 .site-logo{
-    margin: -4px 35px 0 0;
+    margin: -4px 20px 0 0;
     align-self: center;
     transition: all .5s;
     -webkit-transition: all .5s;
@@ -61,7 +61,8 @@ header{
 
 #primary-menu ul li{
     display: block;
-    margin-left: 20px;
+    margin-left: 16px;
+    max-width: 150px;
 }
 
 #primary-menu ul li:first-child{
@@ -75,6 +76,27 @@ header{
     font-weight: 600;
 }
 
+#primary-menu ul li button{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#primary-menu ul li button div{
+    display: flex;
+    align-items: center;
+    text-overflow: ellipsis;
+    overflow:hidden ;
+}
+
+#primary-menu ul li .fa{
+    font-size: 1.5em;
+}
+
+#primary-menu ul li .fa + span{
+    white-space: nowrap;
+    margin-left: 5px;
+}
+
 #primary-menu ul li a.active, #primary-menu ul li a:hover{
     color: #FB8122 ;
 }
@@ -82,5 +104,28 @@ header{
 @media(max-width: 920px){
     .header-search{
         display:none ;
+    }
+
+    .site-logo{
+        margin-right: 10px;
+    }
+}
+
+@media(max-width: 640px){
+    #primary-menu ul li{
+        margin-left: 10px;
+    }
+
+    #primary-menu ul li .fa{
+        font-size: 1.2em;
+    }
+
+    #primary-menu ul li button{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #primary-menu ul li .fa + span{
+        display: none;
     }
 }

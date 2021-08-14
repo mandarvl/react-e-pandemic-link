@@ -23,24 +23,21 @@ class Login extends Component<{toggle:any}>{
 
         const user = this.context.users.find((x:User) => x.email === email.value && x.mdp === password.value) ;
         if(user !== undefined){
-            await this.context.login(user) ;
+            await this.context.login(user, true) ;
         }else{
-            this.setState({
-                errorMessage: "L'adresse email ou le mot de passe est incorrect."
-            }) ;
+            this.context.setErrorMessage("L'adresse email ou le mot de passe est incorrect.") ;
         }
         this.loading = false ;
 
-        email.value = "" ;
         password.value = "" ;
+        this.context.setLoadAuthComp(null) ;
     }
 
     render(){
-        
         return(
             <form onSubmit={(e) => {this.performLogin(e)}}>
                 <h5>Se connecter</h5>
-                {this.state.errorMessage != null ?<p style={{color: "red", fontSize: "14px"}}>{this.state.errorMessage}</p>:null}
+                
                 <div className="form-control">
                     <input type="email" name="email" required placeholder="Votre email" defaultValue={this.context.users[0].email} className="input100" />
                     <span className="focus-input100-1"></span>

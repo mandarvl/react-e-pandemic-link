@@ -10,7 +10,7 @@ const MyContext = React.createContext({
     newPostStatusHandler: (newValue: boolean) => {},
     postModifHandler: (id:number, newValue: Post) => {},
     loggedUser: null,
-    login: (user:User) => {},
+    login: (user:User, withMessage: boolean) => {},
     logout: () => {}
 }) ;
 

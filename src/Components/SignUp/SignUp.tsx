@@ -27,16 +27,15 @@ class SignUp extends Component<{toggle:any}>{
         if(mailExist === undefined){
             const newUser = new User(this.context.getLastId(users), firstName.value, lastName.value, "assets/images/pdp/9.jpg", email.value, password.value) ;
             await this.context.addUser(newUser) ;
-            await this.context.login(newUser) ;
+            await this.context.login(newUser, false) ;
+            this.context.setSuccessMessage("Félicitation! Vous faîtes partie de la communauté de E-Pandemic-Link maintenant.") ;
         }else{
-            this.setState({
-                errorMessage: "Cette adresse email est déjà utilisée."
-            }) ;
+            this.context.setErrorMessage("Cette adresse email est déjà utilisée.") ;
         }
         this.loading = false ;
 
-        email.value = "" ;
         password.value = "" ;
+        this.context.setLoadAuthComp(null) ;
     }
 
     render(){

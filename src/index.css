@@ -515,3 +515,9 @@ textarea.input100 {
         width: 95%;
     }
 }
+
+@media(max-width:640px){
+    .wrapper{
+        width: 99%;
+    }
+}

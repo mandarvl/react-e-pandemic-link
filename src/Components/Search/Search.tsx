@@ -39,7 +39,7 @@ class Search extends Component<SearchProps>{
         let result = this.context.posts.filter((x:Post) => x.title.toLowerCase().includes(this.state.keyword)) ;
         return (
             <div className="bg-white" id="search">
-                <div className="full-padding wrapper flex-container">
+                <div className="wrapper flex-container">
                     <div className="flex-item">
                         <div>
                             <h4 className="text-lead">Résultat de votre recherche</h4>
