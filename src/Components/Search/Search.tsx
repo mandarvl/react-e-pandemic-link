@@ -40,7 +40,7 @@ class Search extends Component<SearchProps>{
         return (
             <div className="bg-white" id="search">
                 <div className="wrapper flex-container">
-                    <div className="flex-item">
+                    <div className="flex-item flex-grow">
                         <div>
                             <h4 className="text-lead">Résultat de votre recherche</h4>
                             {

@@ -7,7 +7,7 @@ class SingleGroup extends Component<{currentGroup: Group, showDescription: boole
         return (
             <a href="/" className="group-item">
                 <div className="small-img-container">
-                    <img className="object-fit-cover" src={window.location.origin+"/"+this.props.currentGroup.imagePath} alt="Groupe" />
+                    <img className="object-fit-cover" src={process.env.PUBLIC_URL+"/"+this.props.currentGroup.imagePath} alt="Groupe" />
                 </div>
                 <div>
                     <span className="name">{this.props.currentGroup.name}</span>

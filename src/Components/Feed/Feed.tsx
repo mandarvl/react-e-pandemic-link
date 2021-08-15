@@ -52,7 +52,7 @@ class Feed extends Component{
                             <div className="panel">
                                 <div className="user-header disabled">
                                     <div className="pdp-container small">
-                                        <img src={this.context.loggedUser.pdpPath} alt="Pdp" />
+                                        <img src={process.env.PUBLIC_URL+"/"+this.context.loggedUser.pdpPath} alt="Pdp" />
                                     </div>
                                     <span className="side-info name">{ this.context.loggedUser.GetFullName() }</span>
                                 </div>

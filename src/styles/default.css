@@ -157,6 +157,10 @@ td  {
   flex: 1 1 auto;
 }
 
+.flex-grow{
+  flex-grow: 1;
+}
+
 .reverse{
   flex-direction: row-reverse;
 }

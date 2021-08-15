@@ -38,7 +38,7 @@ class NewPost extends Component{
                         <form onSubmit={(e) => {e.preventDefault() ; this.createPost()}}>
                             <div className="user-header disabled">
                                 <div className="pdp-container">
-                                    <img src={window.location.origin+"/"+this.context.loggedUser.pdpPath} alt="Pdp" />
+                                    <img src={process.env.PUBLIC_URL+"/"+this.context.loggedUser.pdpPath} alt="Pdp" />
                                 </div>
                                 <div className="side-info inline-flex">
                                     <span className="name">{this.context.loggedUser.GetFullName()}</span>

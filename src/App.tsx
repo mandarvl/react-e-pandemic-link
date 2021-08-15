@@ -7,7 +7,7 @@ import { Group } from './models/Group' ;
 import {MyContext} from './Components/MyContext' ;
 import NewPost from './Components/NewPost/NewPost';
 import { _Comment } from './models/_Comment';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route, HashRouter } from "react-router-dom";
 import { Data } from './Data/data';
 import Error from './Components/Error/Error';
 import AppLoader, { hideLoader, loaderRef, showLoader } from './Components/AppLoader/AppLoader';
@@ -156,7 +156,7 @@ class App extends Component{
       <div>
         <div className="App">
           <MyContext.Provider value={this.state}>
-            <Router>
+            <HashRouter>
               <div id="content">
                 <Header />
                 <Switch>
@@ -167,7 +167,7 @@ class App extends Component{
                     <Route component={Error}></Route>
                 </Switch>
               </div>
-            </Router>
+            </HashRouter>
             {
               this.state.showNewPostModal?<NewPost />:null
             }

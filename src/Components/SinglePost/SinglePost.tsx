@@ -93,7 +93,7 @@ class SinglePost extends Component<{currentPost:Post, maximize: boolean, fromVie
             <div className="post">
                 <div className="user-header">
                     <div className="pdp-container">
-                        <img className="object-fit-cover" src={window.location.origin+"/"+author.pdpPath} alt="Pdp" />
+                        <img className="object-fit-cover" src={process.env.PUBLIC_URL+"/"+author.pdpPath} alt="Pdp" />
                     </div>
                     <div className="side-info">
                         <p className="name">{author.GetFullName()}</p>
