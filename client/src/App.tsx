@@ -17,6 +17,7 @@ import Search from './Components/Search/Search';
 import Footer from './Components/Footer/Footer';
 import { Alert } from '@material-ui/lab' ;
 import Snackbar from '@material-ui/core/Snackbar';
+import Test from './Components/Test/Test';
 
 const FontAwesome = require('react-fontawesome') ;
 
@@ -164,6 +165,7 @@ class App extends Component{
                     <Route path="/login"><Home/></Route>
                     <Route path="/post/:id" component={ViewPost} />
                     <Route path="/search/:keyword" component={Search} />
+                    <Route path="/test" component={Test} />
                     <Route component={Error}></Route>
                 </Switch>
               </div>
