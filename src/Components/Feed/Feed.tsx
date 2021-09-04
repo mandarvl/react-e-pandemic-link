@@ -7,6 +7,7 @@ import { Post } from '../../models/Post';
 import { Group } from '../../models/Group';
 import { hideLoader, showLoader } from '../AppLoader/AppLoader';
 import SuggestGroup from '../SuggestGroup/SuggestGroup';
+import { Tooltip } from '@material-ui/core';
 var FontAwesome = require('react-fontawesome');
 
 class Feed extends Component{
@@ -56,9 +57,11 @@ class Feed extends Component{
                                     </div>
                                     <span className="side-info name">{ this.context.loggedUser.GetFullName() }</span>
                                 </div>
-                                <h4 className="grey editable" onClick={() => {
-                                    this.context.newPostStatusHandler(true) ;
-                                }}>Quelle est votre question?</h4>
+                                <Tooltip title="Cliquez pour ouvrir le formulaire" aria-label="New Question">
+                                    <h4 className="grey editable" onClick={() => {
+                                        this.context.newPostStatusHandler(true) ;
+                                    }}>Quelle question voulez-vous poser ?</h4>
+                                </Tooltip>
                             </div>
                             { 
                                 this.context.posts.slice(0).reverse().map((item:Post) => 
