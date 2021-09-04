@@ -1,0 +1,24 @@
+.group-item{
+    display: flex ;
+    margin-bottom: 20px ;
+}
+
+.group-item.btn-semi-transparent{
+    align-items: center;
+}
+
+.group-item:last-child{
+    margin-bottom: 5px ;
+}
+
+.group-item .small-img-container{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    width: 20px ;
+    height: 20px;
+    min-width: 20px;
+    overflow: hidden ;
+    border-radius: 15% ;
+    margin-right: 10px ;
+}

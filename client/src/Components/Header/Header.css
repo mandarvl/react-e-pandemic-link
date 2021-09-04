@@ -1,0 +1,131 @@
+header{
+    position: sticky;
+    top: 0px;
+    height: 70px;
+    background-color: #1D2228;
+    padding: 0 .5em;
+    z-index: 99;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#header-content{
+    display: flex;
+    align-items: center ;
+    height: 100%;
+}
+
+.header-search{
+    display: flex;
+    -webkit-box-ordinal-group: 1;
+    -ms-flex-order: 0;
+    order: 0;
+    width: 28%;
+}
+
+.header-search>input{
+    flex: 1 1 auto;
+}
+
+.site-logo{
+    margin: -4px 20px 0 0;
+    align-self: center;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+}
+
+.site-logo:hover{
+    color:#fff ;
+}
+
+#primary-menu{
+    display: flex;
+    margin-left: 20px ;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+#primary-menu ul{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+}
+
+#primary-menu ul li{
+    display: block;
+    margin-left: 16px;
+    max-width: 150px;
+}
+
+#primary-menu ul li:first-child{
+    margin-left: 0px;
+}
+
+#primary-menu ul li a{
+    color: #eeeeee ;
+    text-decoration: none;
+    transition: color .5s;
+    font-weight: 600;
+}
+
+#primary-menu ul li button{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#primary-menu ul li button div{
+    display: flex;
+    align-items: center;
+    text-overflow: ellipsis;
+    overflow:hidden ;
+}
+
+#primary-menu ul li .fa{
+    font-size: 1.5em;
+}
+
+#primary-menu ul li .fa + span{
+    white-space: nowrap;
+    margin-left: 5px;
+}
+
+#primary-menu ul li a.active, #primary-menu ul li a:hover{
+    color: #FB8122 ;
+}
+
+@media(max-width: 920px){
+    .header-search{
+        display:none ;
+    }
+
+    .site-logo{
+        margin-right: 10px;
+    }
+}
+
+@media(max-width: 640px){
+    #primary-menu ul li{
+        margin-left: 10px;
+    }
+
+    #primary-menu ul li .fa{
+        font-size: 1.2em;
+    }
+
+    #primary-menu ul li button{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #primary-menu ul li .fa + span{
+        display: none;
+    }
+}

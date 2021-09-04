@@ -1,0 +1,45 @@
+.side-info{
+    margin-left: 10px;
+}
+
+.side-info .fa{
+    margin: 0 8px;
+}
+
+.right-side .group-item .name{
+    display: block;
+    font-weight: 600;
+    color: rgb(36, 36, 36) ;
+    margin-bottom: 5px;
+}
+
+.right-side .group-item .small-img-container{
+    width: 30px ;
+    min-width: 30px;
+    height: 30px;
+}
+
+.right-side .group-item{
+    padding-bottom: 15px;
+    border-bottom: 1px rgb(221, 221, 221) solid;
+}
+
+.right-side .group-item:last-child{
+    border-bottom: 0;
+}
+
+.sticky{
+    position: sticky ;
+    top: 70px ;
+}
+
+.wrapper{
+    position: relative;
+}
+
+@media(max-width: 1024px){
+    .sticky{
+        position: static;
+        top: auto;
+    }
+}

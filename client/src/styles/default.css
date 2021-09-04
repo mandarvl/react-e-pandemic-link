@@ -1,0 +1,171 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    border: 0; 
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #444444 ;
+  font-size: 15px ;
+  line-height: 1.9em;
+}
+
+form, section, article, header, footer{
+  width: 100%;
+}
+
+h1{ 
+    font-size: 2.0em; 
+} 
+     
+h2{ 
+  font-size: 1.8em;     
+} 
+     
+h3{ 
+  font-size: 1.6em; 
+} 
+     
+h4{ 
+  font-size: 1.4em;  
+  margin: .5em 0;   
+} 
+     
+h5{ 
+  font-size: 1.2em; 
+  margin: .3em 0;     
+} 
+     
+p{ 
+  font-size: 1.05em;     
+}
+
+img {
+  width:100%;
+  height:auto;
+}
+
+.clear{ 
+  clear:both; 
+} 
+
+.right{ 
+  float: right; 
+} 
+
+.left{ 
+  float: left; 
+}
+
+.hidden, [hidden]{
+  display: none!important;
+}
+
+.inline-flex{
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.top-right{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-left{
+  text-align: left;
+}
+
+.wrapper{  
+  width:90%;   
+  margin-left:auto;  
+  margin-right:auto;
+}
+
+img.object-fit-cover{
+  height:100%; 
+  min-width: 100%;
+  object-fit: cover;
+}
+
+input:not(input[type="submit"]), textarea { 
+  padding: 5px 10px; 
+  border: 1px solid #c2c2c2;
+  font-size: 16px ;    
+  font-family: inherit;
+}
+
+input:not(input[type="submit"]):focus, textarea:focus { 
+  border-color: transparent !important; 
+  outline: 0;
+}
+
+textarea{
+  resize: none;
+}
+
+/* Tables  
+-----------------------------------------------------------------------------*/ 
+
+table {  
+  border-spacing: 0; 
+  border-collapse: collapse; 
+} 
+
+td  { 
+  text-align: left; 
+  font-weight: normal; 
+}
+
+/* Flexbox
+-----------------------------------------------------------------------------*/
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.flex-container>.flex-item{
+  display:flex;
+  padding:.5em;
+  box-sizing: border-box;
+}
+
+.flex-item>div{
+  flex: 1 1 auto;
+}
+
+.flex-grow{
+  flex-grow: 1;
+}
+
+.reverse{
+  flex-direction: row-reverse;
+}
+
+.flex-container>.col-25{
+  flex: 0 0 25%;
+  width: 25%;
+}
