@@ -18,10 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "emitDecoratorMetadata": false
+    "jsx": "react-jsx"
   },
   "include": [
     "src"
-  ]
+, "../setupTests.ts"  ]
 }
