@@ -1,28 +1,5 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component, Suspense } from 'react';
 import './App.css';
-<<<<<<< HEAD:src/App.tsx
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-=======
 import Header from './Components/Header/Header' ;
 import { Post } from './models/Post';
 import { User } from './models/User' ;
@@ -238,7 +215,6 @@ class App extends Component{
       </div>
     );
   }
->>>>>>> 7f5b099383aea121d99c688f70674b27567707bb:client/src/App.tsx
 }
 
 export default App;
